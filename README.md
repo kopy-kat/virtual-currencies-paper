@@ -1,1 +1,3 @@
-# virtual-currencies-paper
+# Virtual Currencies Paper
+
+in progress

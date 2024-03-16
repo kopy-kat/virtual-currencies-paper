@@ -1,0 +1,12 @@
+{
+  "name": "virtual-currencies-paper",
+  "description": "todo",
+  "author": {
+    "name": "Konrad Kopp",
+    "url": "https://konradkopp.com"
+  },
+  "scripts": {
+    "build": "quarto render --to pdf",
+    "dev": "quarto preview ./paper.qmd --no-browser"
+  }
+}

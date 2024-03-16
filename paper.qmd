@@ -1,0 +1,38 @@
+---
+title: "BEE Paper"
+date: 2024-03-16
+author:
+  - name: Konrad Kopp
+    email: konrad.kopp@stcatz.ox.ac.uk
+    affiliation: University of Oxford
+abstract: > 
+  The abstract is currently pending
+keywords:
+  - Behavioral Economics
+---
+
+# Introduction
+
+# Literature Review
+
+# Data 
+```{r}
+
+# Define the cars vector with 5 values
+cars <- c(1, 3, 6, 4, 9)
+
+# Graph the cars vector with all defaults
+plot(cars)
+```
+
+# Methodology 
+
+# Results
+
+# Conclusion 
+
+# Appendix {.appendix}
+
+## Experiment Instructions
+
+todo
