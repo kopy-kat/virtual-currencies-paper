@@ -17,12 +17,37 @@ keywords:
 
 # Data 
 ```{r}
+# Load the experiment data
+experiment_data <-
+    read.csv("data/experiment_data.csv")
 
-# Define the cars vector with 5 values
-cars <- c(1, 3, 6, 4, 9)
+# Rename the columns to more meaningful names
+colnames(experiment_data)[which(names(experiment_data) == "Q5a")] <-
+    "group1_bid"
+colnames(experiment_data)[which(names(experiment_data) == "Q5b")] <-
+    "group2_bid"
+colnames(experiment_data)[which(names(experiment_data) == "Q6")] <-
+    "lived_abroad"
+colnames(experiment_data)[which(names(experiment_data) == "Q7")] <-
+    "travel_frequency"
+colnames(experiment_data)[which(names(experiment_data) == "Q8")] <-
+    "expenditure"
 
-# Graph the cars vector with all defaults
-plot(cars)
+# Convert the values of the bid columns to pounds
+experiment_data$group1_bid_in_pounds <-
+    experiment_data$group1_bid * 5
+experiment_data$group2_bid_in_pounds <-
+    experiment_data$group2_bid / 5
+
+# Plot a boxplot for columns the bid columns
+boxplot(
+    experiment_data$group1_bid_in_pounds,
+    experiment_data$group2_bid_in_pounds,
+    main = "Boxplot of group 1 and group 2 bids (in Pounds)",
+    names = c("Group 1", "Group 2"),
+    xlab = "Variables",
+    ylab = "Values"
+)
 ```
 
 # Methodology 
