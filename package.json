@@ -7,6 +7,10 @@
   },
   "scripts": {
     "build": "quarto render --to pdf",
-    "dev": "quarto preview ./paper.qmd --no-browser"
+    "dev": "quarto preview ./paper.qmd --no-browser",
+    "spellcheck": "cspell 'paper.qmd'"
+  },
+  "devDependencies": {
+    "cspell": "^8.6.1"
   }
 }

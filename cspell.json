@@ -1,0 +1,7 @@
+{
+  "language": "en-gb",
+  "allowCompoundWords": true,
+  "dictionaries": ["r"],
+  "enabledLanguageIds": ["markdown", "r"],
+  "useGitignore": true
+}
