@@ -19,21 +19,21 @@ Intro
 
 Literature review
 
-face value paper: 
+face value paper [@Raghubir2002]: 
 - Arguably, the face value effect is due to the accessibility and perceptual salience of the face value of the foreign currency. Theoretically, therefore, the strength and persistence of the face value effect is likely to depend on the extent to which an individual has the opportunity or the time available to process exchange rate information and/or has experience in using a particular foreign currency. The last two studies show that the time available to process exchange information (study 5) and experience with a foreign currency, both measured (study 5) and manipulated (study 6), moderate the face value effect.
 - The asymmetric effect may be due to the differential difficulty in using whole numbers versus fractions or multiplying versus dividing
 - First, the reliance on face value may be a function of the ease with which the foreign money can be converted, implying that as r approaches a round number, a is likely to reduce. Second, a may vary with the absolute deviation of r from one, implying that as r deviates from one, the need to adjust increases implying a nonlinear relationship. From an effort-accuracy perspective, when r is close to one, it may not be worthwhile to adjust. Further, note that for currencies that are multiples of the home currency, r can range from one to , whereas for fractional currencies, r is bounded between zero and one. The lower bound may account for the lower likelihood of adjustment for a currency that is a fraction of the homecurrency. Future research should examine the asymmetric and nonlinear nature of this effect
 - Despite attempts to make the tasks as realistic as possible, the studies reported were laboratory experiments, and issues of generalizability when real money is on the line do arise. For instance, when people actually exchange foreign currency they may feel richer or poorer depending on the exchange rate, and the differences in perceptions of wealth may affect product valuation. 
 
-fang paper:
+fang paper [@Fang2019]:
 - did not implement bdm because infeasible
 
-perceived value of money:
+perceived value of money [@Wertenbroch2007]:
 - In particular, we extend previous research in several important ways. We propose a conceptualization that not only considers the nominal prices faced by consumers but also takes salient reference values into account, such as the budget consumers have available to make a purchase or the price of competing purchase options. By including budget constraints and reference standards, our conceptualization links nominal valuations to standard economic as well as psychophysical theory. We propose and test two alternative computational mechanisms by which consumers might evaluate prices in different currencies relative to such ,reference standards. Specifically, do consumers use the difference between reference values and prices to derive their evaluations or the ratio of the two?
 
 build on perceived value of money paper; where to extend:
 - incentive compatible mechanism
-- control for familiarity of currencies (easy on mind, easy on wallet)
+- control for familiarity of currencies (easy on mind, easy on wallet) [@Alter2008]
 - examine the dispute between it and face value Paper
 - expand to virtual currencies (fang)
 
@@ -140,6 +140,9 @@ boxplot(
 
 ## Limitations, Theoretical Implications and Future Research
 
+# References
+::: {#refs}
+:::
 
 # Appendix {.appendix}
 
