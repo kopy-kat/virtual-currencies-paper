@@ -13,9 +13,11 @@ keywords:
   - Consumer Choice Theory
 ---
 
-Introduction
+# Introduction
 
-# Literature Review -- rename?
+Intro
+
+Literature review
 
 face value paper: 
 - Arguably, the face value effect is due to the accessibility and perceptual salience of the face value of the foreign currency. Theoretically, therefore, the strength and persistence of the face value effect is likely to depend on the extent to which an individual has the opportunity or the time available to process exchange rate information and/or has experience in using a particular foreign currency. The last two studies show that the time available to process exchange information (study 5) and experience with a foreign currency, both measured (study 5) and manipulated (study 6), moderate the face value effect.

@@ -5,6 +5,9 @@ project:
 toc: true
 number-sections: false
 bibliography: references.bib  
+echo: false
+fig-align: center
+lang: en-GB
 format:
   pdf:
     documentclass: report
