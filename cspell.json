@@ -3,5 +3,6 @@
   "allowCompoundWords": true,
   "dictionaries": ["r"],
   "enabledLanguageIds": ["markdown", "r"],
-  "useGitignore": true
+  "useGitignore": true,
+  "words": ["xlab", "ylab", "numerosity"]
 }
