@@ -1,3 +1,7 @@
+# Load the required libraries
+library(pwr)
+library(lsr)
+
 # Load the experiment data
 experiment_data <-
   read.csv("virtual-currencies-paper/data/experiment_data.csv")
@@ -27,23 +31,7 @@ sd(experiment_data$group1_bid_in_pounds, na.rm = TRUE)
 summary(experiment_data$group2_bid_in_pounds)
 sd(experiment_data$group2_bid_in_pounds, na.rm = TRUE)
 
-# Perform a t-test to compare the means of the two groups
-t.test(experiment_data$group1_bid_in_pounds,
-       experiment_data$group2_bid_in_pounds)
-
-# Conduct a regression analysis to examine the relationship between 
-# the bid amounts and the demographic variables
-model_group1 <-
-  lm(group1_bid_in_pounds ~ lived_abroad + travel_frequency + expenditure,
-     data = experiment_data)
-summary(model_group1)
-
-model_group2 <-
-  lm(group2_bid_in_pounds ~ lived_abroad + travel_frequency + expenditure,
-     data = experiment_data)
-summary(model_group2)
-
-# Plot a boxplot for columns the bid columns
+# Plot a boxplot for the bid columns
 boxplot(
   experiment_data$group1_bid_in_pounds,
   experiment_data$group2_bid_in_pounds,
@@ -53,5 +41,31 @@ boxplot(
   ylab = "Values"
 )
 
-# Robustness checks
-# TODO
+# Perform a t-test to compare the means of the two groups
+t.test(
+  experiment_data$group1_bid_in_pounds,
+  experiment_data$group2_bid_in_pounds
+)
+
+# Conduct a regression analysis to examine the relationship between
+# the bid amounts and the demographic variables
+model_group1 <-
+  lm(group1_bid_in_pounds ~ lived_abroad + travel_frequency + expenditure,
+    data = experiment_data
+  )
+summary(model_group1)
+
+model_group2 <-
+  lm(group2_bid_in_pounds ~ lived_abroad + travel_frequency + expenditure,
+    data = experiment_data
+  )
+summary(model_group2)
+
+# Conduct a power analysis to determine the power of the t test and
+# sample size required for a power of 0.8 (80%)
+effect_size <- cohensD(
+  experiment_data$group1_bid_in_pounds,
+  experiment_data$group2_bid_in_pounds
+)
+pwr.t2n.test(n1 = 21, n2 = 20, d = effect_size, sig.level = 0.05)
+pwr.t.test(power = 0.8, d = effect_size, sig.level = 0.05)
