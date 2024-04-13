@@ -9,13 +9,97 @@ abstract: >
   The abstract is currently pending
 keywords:
   - Behavioural Economics
+  - Face Value Effect
+  - Consumer Choice Theory
 ---
 
-# Introduction
+Introduction
 
-# Literature Review
+# Literature Review -- rename?
 
-# Data 
+face value paper: 
+- Arguably, the face value effect is due to the accessibility and perceptual salience of the face value of the foreign currency. Theoretically, therefore, the strength and persistence of the face value effect is likely to depend on the extent to which an individual has the opportunity or the time available to process exchange rate information and/or has experience in using a particular foreign currency. The last two studies show that the time available to process exchange information (study 5) and experience with a foreign currency, both measured (study 5) and manipulated (study 6), moderate the face value effect.
+- The asymmetric effect may be due to the differential difficulty in using whole numbers versus fractions or multiplying versus dividing
+- First, the reliance on face value may be a function of the ease with which the foreign money can be converted, implying that as r approaches a round number, a is likely to reduce. Second, a may vary with the absolute deviation of r from one, implying that as r deviates from one, the need to adjust increases implying a nonlinear relationship. From an effort-accuracy perspective, when r is close to one, it may not be worthwhile to adjust. Further, note that for currencies that are multiples of the home currency, r can range from one to , whereas for fractional currencies, r is bounded between zero and one. The lower bound may account for the lower likelihood of adjustment for a currency that is a fraction of the homecurrency. Future research should examine the asymmetric and nonlinear nature of this effect
+- Despite attempts to make the tasks as realistic as possible, the studies reported were laboratory experiments, and issues of generalizability when real money is on the line do arise. For instance, when people actually exchange foreign currency they may feel richer or poorer depending on the exchange rate, and the differences in perceptions of wealth may affect product valuation. 
+
+fang paper:
+- did not implement bdm because infeasible
+
+perceived value of money:
+- In particular, we extend previous research in several important ways. We propose a conceptualization that not only considers the nominal prices faced by consumers but also takes salient reference values into account, such as the budget consumers have available to make a purchase or the price of competing purchase options. By including budget constraints and reference standards, our conceptualization links nominal valuations to standard economic as well as psychophysical theory. We propose and test two alternative computational mechanisms by which consumers might evaluate prices in different currencies relative to such ,reference standards. Specifically, do consumers use the difference between reference values and prices to derive their evaluations or the ratio of the two?
+
+build on perceived value of money paper; where to extend:
+- incentive compatible mechanism
+- control for familiarity of currencies (easy on mind, easy on wallet)
+- examine the dispute between it and face value Paper
+- expand to virtual currencies (fang)
+
+# Model
+
+ratio (traditional) model:
+- formulate valuation of good as ratio to budget in home currency
+- convert valuation of good into bid currency
+
+assumptions:
+- is it rational if we always assume that the conversion will be accurate? what if this causes more mental effort than reward?
+- people can easily do those calculations in their head
+
+if we agree with assumptions, then there should be (small) differences but not systematic ones (see methodology)
+
+face value model:
+- formulate valuation of good in home currency
+- convert valuation of good into bid currency but weighted by nominal value of foreign currency
+
+$$V = Vn$$
+$$V = Vr$$
+$$V = aVn + (1 - a)Vr$$
+
+if this is the right model, then we should see group 1 overspend and group 2 underspend
+
+value of money model:
+- difference in budget and item price in foreign currency
+- insufficiently adjust for exchange rate, leading to biased assesment of real value of transaction
+
+if this is the right model, then we should see group 1 underspend and group 2 overspend
+
+# Method
+
+- explain sample
+- explain experiment and choices made
+- shortcomings/downsides:
+ - bdm was done incorrectly: does this have an impact?
+ - low sample size: could this be an issue? (power analysis)
+
+# Results and Discussion
+
+results:
+data analysis:
+- normalise bids to pounds
+- summary statistics and boxplot
+- t-test to compare means between groups
+- conduct regression to investigate relationship between bids and demographic vars
+
+outline the results: 
+- group one bid lower on average; statistically significant (but only power of 20%)
+- no statistically significant relationships between domographic vars and bids found
+
+how to explain results: value of money paper suggests this, confirms this research, face value effect stipulates differernt result but seems to be incorrect here
+
+explanations for effect:
+- model 3 is the correct one
+- anchoring: higher endowment anchors at higher endowment value (perceived value of money paper: When provided with a budget, consumers might anchor on the nominal value of that budget when evaluating transactions in foreign currencies. But this would not have predicted the biased evaluations in our follow-up study since the nominal budget was the same (i.e., quoted in US$) across all numerosity conditions)
+- people are worse at dividing than multiplying (or put in less effort) (or reverse)
+- people prefer using whole numbers over fractions - is this rational? mental ease?
+- sample size too small - power analysis
+
+conclusion: agree with model 3 and get rid of some of its shortcomings:
+- incentive compatible mechanism
+- control for familiarity of currencies (easy on mind, easy on wallet)
+- examine the dispute between it and face value Paper
+- expand to virtual currencies (fang)
+
+## Data 
 ```{r}
 # Load the experiment data
 experiment_data <-
@@ -50,14 +134,13 @@ boxplot(
 )
 ```
 
-# Methodology 
+# General Discussion
 
-# Results
+## Limitations, Theoretical Implications and Future Research
 
-# Conclusion 
 
 # Appendix {.appendix}
 
 ## Experiment Instructions
 
-todo
+## Source Code
