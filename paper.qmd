@@ -271,4 +271,8 @@ conclusion: agree with model 3 and get rid of some of its shortcomings:
 
 ## Experiment Instructions
 
+The full experiment instructions can be found as screenshots at [https://github.com/kopy-kat/virtual-currencies-paper/tree/main/experiment_instructions](https://github.com/kopy-kat/virtual-currencies-paper/tree/main/experiment_instructions).
+
 ## Source Code
+
+The full source code of the paper and the data analysis can be found at [https://github.com/kopy-kat/virtual-currencies-paper](https://github.com/kopy-kat/virtual-currencies-paper).
