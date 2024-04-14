@@ -67,20 +67,137 @@ if this is the right model, then we should see group 1 underspend and group 2 ov
 
 # Method
 
-- explain sample
-- explain experiment and choices made
-- shortcomings/downsides:
- - bdm was done incorrectly: does this have an impact?
- - low sample size: could this be an issue? (power analysis)
+There were 41 participants of the study, most of them current undergraduate students at the University of Oxford, but some participants were also recent graduates and postgraduate students. The study took place online, using Qualtrics, and students were incentivised to participate by taking part in a lottery, which will be explained in further detail below.
 
-# Results and Discussion
+## Study
 
-results:
-data analysis:
-- normalise bids to pounds
-- summary statistics and boxplot
-- t-test to compare means between groups
-- conduct regression to investigate relationship between bids and demographic vars
+The study itself was split into four parts: Consent Form, Introduction, Auction and Follow-Up Questions. The entire experiment instructions can be found in the [Experiment Instructions](./paper.qmd#experiment-instructions) section of the Appendix. The first section asked participants to read through and sign the consent form in order to ensure that they were informed about the study and what data would be collected. In the introductory section, the BDM mechanism was explained to participants and they were asked to complete four question that tested their understanding of the mechanism. The aim of this section was to ensure that participants properly understood how the mechanism worked in order to elicit their real WTP during the main part of the study. 
+
+The auction was the main part of the study, with the aim of eliciting the participants' WTP on a specific item and comparing these across different currencies used. In this section, participants were randomly split into two groups with almost-identical instructions. The participants were instructed to bid on the item shown below, a tabletop airhockey table, using the virtual currency "BlueCoin". The auction was explained to follow the BDM mechanism and it was also stated that three participants of the experiment would be randomly selected, their auction would be simulated and they would receive the outcome. The only difference between the groups was the exchange rate between BlueCoin and the British Pound (£) and the endowment that the participants received in BlueCoin. The first group received an endowment of 10 BlueCoin where one BlueCoin equals £5 and the second group recieved an endowment of 250 BlueCoin where one BlueCoin equals £0.2. To complete the auction, participants were asked to respond with their bid, in BlueCoin.
+
+The final part of the experiment consisted of optional follow-up questions that were used to determine if there are any trends in bidding behaviour based on some characteristics of the participants. The questions asked were about whether they had previously lived in a different country than the UK, how often they tend to travel outside of the UK and what their typical expenditure is in a given month. The intention behind the first two questions is to use them as a proxy for experience dealing with foreign currencies, where presumably people that travel frequently or have lived in multiple countries are more experienced with currency conversion calculations. The final question was asked to be able to determine whether there were any systematic differences in WTP based on a participants normal expenditure.
+
+## Auction Design
+
+Since the aim of the study was to determine whether there were any systematic differences in WTP between consumers when the only differing factor is the currency used, we decided to not include a control group that bid on the item using Pounds, which was the design of some of the experiments run by RAS [@Raghubir2002]. This allowed for a simpler design and more power given the same sample size. Further, unlike the studies run by RAS [@Raghubir2002] and WER [@Wertenbroch2007], we did not use a fiat currency or mix of fiat and fictional currencies, but used only one fictional currency for both groups. On the one hand, this simplification was due to a focus of wether the effects described in previous papers also held in similar ways for virtual currencies. On the other hand, it also allowed us to preclude any biases or previous experience that participants might have had towards or with certain currencies. In the course of this, we chose the relatively undescript name for a fictional, virtual currency: BlueCoin.
+
+Another important decision in the design of the experiment was which item to select that a majority of participants would have a non-zero WTP. This is important since if the majority or even the entirety of participants were to bid zero on the item, then we would only learn that this was the participants' WTP for that good, but not whether there are any systematic differences in the WTP when using different currencies. Hence, we selected a tabletop airhockey table, something that few enough people have so that they won't want another one, but enough people want with a non-zero WTP, especially among a student population. In fact, only six participants of the experiment stated a WTP of 0.
+
+In designing the main part of the experiment, we chose to conduct an auction, specifically using the BDM mechanism, in order to have an incentive-compatible method of eliciting the participants' WTP. The BDM's incentive compatibility in eliciting WTP is a well-established phenomenon that is superior to using participants' stated preferences [@cite]. As mentioned above, the studies conducted by RAS [@Raghubir2002], WER [@Wertenbroch2007] (with the exception of one permutation of one of the studies) and Fang [@Fang2019] did not implement incentive-compatible methods of eliciting the participants' preferences, making this experiment and important addition to these previous studies in examining whether the effects describe still hold when a more accurate way of eliciting WTP is used. In order to incentivise the participants even further, we ran a lottery that paid out three randomly-chosen participants based on their actual choices made in the auction and by simulating the BDM mechanism using a random number generator. Due to budget constraints, we were only able to play this lottery for three people, but given that the sample size of the experiment was relatively small, the potential to receive one's outcome is likely to have helped in eliciting the participants' true WTP.
+
+Finally, given our budget, we were able to give participants an endowment of £50 each, which was around double of what the item costs to buy. Assuming that the item is priced roughly around the average WTP (which turned out to be correct), this endowment was chosen to leave enough room for people with higher WTP to make their bid and for us to capture this in the data. This is important for the goals of the experiment, since if we had, for example, chosen an endowment of £20, the majority of participants might have bid their maximum amount, hindering our ability to meaningfully compare WTP across the two groups. We chose relatively simple exchange rates of 5 and $1/5$ so that the exchange rate calculations would be relatively easy to make, allowing us to be more confident that differences between groups were not due to the mental effort required to do calculations but due to something else.
+
+## Limitations
+
+In setting up the experiment, we incorrectly used the BDM mechanism. Instead of explaining it as a sealed-bid second-price auction, the experiment instructions explained it as a sealed-bid first-price auction. Unlike in a second-price auction, the participants of a first price auction do not have a dominant strategy to bid their true valuations, in fact there generally is no dominant strategy in such an auction [@cite]. [@todo]
+
+Another limitation of the study is the low sample size of 41 participants, which entails lower statistical power and thus a lower likelihood of detecting a true positive when an effect actually exists. I will examine this in further detail in the next section, conducting a power analysis and estimating how big the sample size should have been to achieve an adequate level of power.
+
+# Results
+
+There were 41 participants, 21 in the first group and 20 in the second. For consistency, I will refer to the first group as the fraction group, since 0.2 BlueCoin = £1, and the second as the multiple group, since 5 BlueCoin = £1, in line with the terminology used by RAS [@Raghubir2002]. To conduct the data analysis, I normalised the bids across both groups by converting them into pounds and computed the following summary statistics:
+
+```{r}
+# Load the experiment data
+experiment_data <-
+    read.csv("data/experiment_data_formatted.csv")
+
+# Summary statistics for the bid columns
+summary(experiment_data$group_fraction_bid_in_pounds)
+sd(experiment_data$group_fraction_bid_in_pounds, na.rm = TRUE)
+
+summary(experiment_data$group_multiple_bid_in_pounds)
+sd(experiment_data$group_multiple_bid_in_pounds, na.rm = TRUE)
+```
+
+Further, I plotted the following boxplot, in order to visually see the difference between the groups:
+
+```{r}
+# Load the experiment data
+experiment_data <-
+    read.csv("data/experiment_data_formatted.csv")
+
+# Plot a boxplot for the bid columns
+boxplot(
+    experiment_data$group_fraction_bid_in_pounds,
+    experiment_data$group_multiple_bid_in_pounds,
+    main = "Boxplot of fraction and multiple group bids (in Pounds)",
+    names = c("Group Fraction", "Group Multiple"),
+    xlab = "Variables",
+    ylab = "Values"
+)
+```
+
+As is obvious from the summary statistics and the boxplot, there is a difference between both groups, namely that the bids in the multiple group seem to be higher on average than those in the fraction group. To investigate this hypothesis, I conducted a t-test of a difference in means between the groups, specifically a Welch Two Sample t-test. The null hypothesis is that the difference in means is equal to 0 (or, alternatively, that the means are the same) and the alternative hypothesis is that this difference is not equal to 0 (or, alternatively, that the means are not the same):
+
+$$h_0: µ_1 = µ_2$$
+$$h_1: µ_1 ≠ µ_2$$
+
+Hence, I conducted the t-test:
+
+```{r}
+# Load the experiment data
+experiment_data <-
+    read.csv("data/experiment_data_formatted.csv")
+
+# Perform a t-test to compare the means of the two groups
+t.test(
+    experiment_data$group_fraction_bid_in_pounds,
+    experiment_data$group_multiple_bid_in_pounds
+)
+```
+
+The t-value of -1.2323 suggests that there is a difference in the means between the groups and, since it is negative, that the mean of the fraction group is lower. However, the p-value is 0.2252, which is quite high. If we take the typical significance level of $α = 0.05$ we find that the p-value is higher than this value, and thus fail to reject the null hypothesis at the 5% significance level. Further, the 95% confidence interval is $[-15.401901, 3.740092]$ which includes 0, providing further evidence that the difference in means between the groups is not statistically significant. Thus, we must conclude that while there seems to be a difference in means based on the sample data, this difference is not statistically significant for this sample size.
+
+To investigate this further, I have conducted a power analysis in order to determine the power of the t-test, which refers to the likelihood of the test detecting a true positive when an effect actually exists [@cite]. High power would indicate that this likelihood is high and vice versa. To conduct the analysis, we first need to find the effect size, or Cohen's D and then implement the power analysis. Further, I will also conduct an analysis that investigates how big the sample size should have been to get a power of 80%.
+
+```{r}
+# Load the required libraries
+library(pwr)
+library(lsr)
+
+# Load the experiment data
+experiment_data <-
+    read.csv("data/experiment_data_formatted.csv")
+
+# Conduct a power analysis to determine the power of the t test and
+# sample size required for a power of 0.8 (80%)
+effect_size <- cohensD(
+    experiment_data$group_fraction_bid_in_pounds,
+    experiment_data$group_multiple_bid_in_pounds
+)
+pwr.t2n.test(n1 = 21, n2 = 20, d = effect_size, sig.level = 0.05)
+pwr.t.test(power = 0.8, d = effect_size, sig.level = 0.05)
+
+```
+
+Based on the first test with the same significance level of 0.05, we can see that the power is 0.2246363 or 22%, which means that there is only a 22% likelihood of detecting a true positive if an effect actually exists. In other words, the likelihood of detecting a true difference in means between the two groups, when this difference exists, is only 22%, which is far below the usual value of 80%. The second test takes in this power of 80% and calculates the required sample size at the observed effect size. The result is $n = 107$ where the sample size is $2n$ or 214. Hence, using a sample size of 214 and observing the same effect, this t-test would yield a power of 80% at the 5% significance level.
+
+Finally, I conducted a regression of the demographic values collected in the fourth part of the experiment on the bids of each group. This is done in order to determine whether there is any correlation between the demographic variables and the bid amount, which would suggest that randomisation did not occur correctly, which could have been exacerbated by the small sample size. The regression yields the following outcomes:
+
+```{r}
+# Load the experiment data
+experiment_data <-
+    read.csv("data/experiment_data_formatted.csv")
+
+# Conduct a regression analysis to examine the relationship between
+# the bid amounts and the demographic variables
+model_group_fraction <-
+    lm(group_fraction_bid_in_pounds ~ lived_abroad + travel_frequency + expenditure,
+        data = experiment_data
+    )
+summary(model_group_fraction)
+
+model_group_multiple <-
+    lm(group_multiple_bid_in_pounds ~ lived_abroad + travel_frequency + expenditure,
+        data = experiment_data
+    )
+summary(model_group_multiple)
+```
+
+Based on this regression, there are no statistically significant correlations at the 5% significance level or lower. However, there is one correlation that is significant at the 10% significance level, namely of `expenditure£551-£700` on the multiple group. The coefficient of -43.487 suggests that people whose usual expenditure is between £551 and £700 per month bid lower than the group overall. However, given that this is only significant at the 10% level and not at any lower ones, it is likely that this correlation is due to the low sample size rather than representing a true correlation between these variables.
+
+# Discussion
 
 outline the results: 
 - group one bid lower on average; statistically significant (but only power of 20%)
@@ -101,42 +218,7 @@ conclusion: agree with model 3 and get rid of some of its shortcomings:
 - examine the dispute between it and face value Paper
 - expand to virtual currencies (fang)
 
-## Data 
-```{r}
-# Load the experiment data
-experiment_data <-
-    read.csv("data/experiment_data.csv")
-
-# Rename the columns to more meaningful names
-colnames(experiment_data)[which(names(experiment_data) == "Q5a")] <-
-    "group1_bid"
-colnames(experiment_data)[which(names(experiment_data) == "Q5b")] <-
-    "group2_bid"
-colnames(experiment_data)[which(names(experiment_data) == "Q6")] <-
-    "lived_abroad"
-colnames(experiment_data)[which(names(experiment_data) == "Q7")] <-
-    "travel_frequency"
-colnames(experiment_data)[which(names(experiment_data) == "Q8")] <-
-    "expenditure"
-
-# Convert the values of the bid columns to pounds
-experiment_data$group1_bid_in_pounds <-
-    experiment_data$group1_bid * 5
-experiment_data$group2_bid_in_pounds <-
-    experiment_data$group2_bid / 5
-
-# Plot a boxplot for columns the bid columns
-boxplot(
-    experiment_data$group1_bid_in_pounds,
-    experiment_data$group2_bid_in_pounds,
-    main = "Boxplot of group 1 and group 2 bids (in Pounds)",
-    names = c("Group 1", "Group 2"),
-    xlab = "Variables",
-    ylab = "Values"
-)
-```
-
-# General Discussion
+## Summary
 
 ## Limitations, Theoretical Implications and Future Research
 
