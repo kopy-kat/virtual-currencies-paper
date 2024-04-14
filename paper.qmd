@@ -15,6 +15,8 @@ keywords:
 
 # Introduction
 
+For consistency, I will refer to the first group as the fraction group, since 0.2 BlueCoin = £1, and the second as the multiple group, since 5 BlueCoin = £1, in line with the terminology used by RAS [@Raghubir2002].
+
 Intro
 
 Literature review
@@ -37,33 +39,72 @@ build on perceived value of money paper; where to extend:
 - examine the dispute between it and face value Paper
 - expand to virtual currencies (fang)
 
-# Model
 
-ratio (traditional) model:
-- formulate valuation of good as ratio to budget in home currency
-- convert valuation of good into bid currency
+# Theoretical Framework
 
-assumptions:
-- is it rational if we always assume that the conversion will be accurate? what if this causes more mental effort than reward?
-- people can easily do those calculations in their head
+## Standard Model
 
-if we agree with assumptions, then there should be (small) differences but not systematic ones (see methodology)
+Standard consumer choice theory suggests that individuals formulate valuations of goods in relation to reference points, such as their budget [@cite]. Specifically, standard theory poses that consumers evaluate their valuation for a good as a ratio with the budget in order to determine what proportion of their spending power is required to purchase the good. To formaulate valuations of goods in a different currency, consumers would first determine the value of the good in their home currency and subsequently apply the exchange rate to get their valuation in the foreign currency. Hence, the model follows a two step process:
 
-face value model:
-- formulate valuation of good in home currency
-- convert valuation of good into bid currency but weighted by nominal value of foreign currency
+1. Formaulate valuation of good as ratio to budget in home currency
+2. Convert the valuation into foreign currency
 
-$$V = Vn$$
-$$V = Vr$$
-$$V = aVn + (1 - a)Vr$$
+Alternatively, this can be stated using the following syntax:
 
-if this is the right model, then we should see group 1 overspend and group 2 underspend
+$$V_n = f(\dfrac{x}{M_n})$$
+$$V = V_n * X = V_r$$
 
-value of money model:
-- difference in budget and item price in foreign currency
-- insufficiently adjust for exchange rate, leading to biased assesment of real value of transaction
+where V is the valuation in the foreign currency, $V_n$ is the valuation of the good in the home currency (nominal), $V_r$ is the valuation of the good in the foreign currency, $M_n$ is the budget in the home currency, X is the exchange rate and $f(x)$ is some function that uses a valuation relative to the budget in order to compute $V_n$.
 
-if this is the right model, then we should see group 1 underspend and group 2 overspend
+One assumption that is implicit in this model is that a consumer will always correctly adjust their valuation ratio based on the exact exchange rate. However, this might not always be the most rational thing to do. For example, when exchange rates fluctuate it might not be worth the effort of a consumer to always use the most up-to-date exchange rate, but rather to use some approximate value. Further, when an individual needs to do these exchange rate calculations in their head, it might not be worth the mental effort to calculate the amount in the foreign currency perfectly, but an approximation might be fine. For example, it would be rational to multiply an amount in home currency by 1.2 if the real exchange rate is 1.2113248 and the effort required is significant, such as when attempting to calculate it in one's hand. By loosening these assumptions, the standard model is able to account for small deviations from a consumer's real valuation of a good in a foreign currency.
+
+## Face Value Effect Model
+
+RAS [@Raghubir2002] put forth a different model for how consumers formulate their valuation of a good in a foreign currency based on their studies conducted. Sepcficially, they pose that a consumer will first formulate a valuation of a good in their home currency, before converting that amount into the foreign currency usging the exchange rate. However, they argue that this calculation is biased by the nominal value of the good in the home currency (in cases where a consumer does not determine their valuation but obvserves a price, this calculation would be biased by the nominal value of the good in the foreign currency). This model may be formaulated as follows:
+
+1. Formulate valuation of good in home currency
+2. Convert the valuation into foreign currency
+3. Adjust using the nominal value of good in home currency
+
+Alternatively, this can be stated using the following syntax:
+
+$$V = α(V_n) + (1 - α)V_r$$
+
+where V is the valuation in the foreign currency, $V_n$ is the valuation of the good in the home currency (nominal), $V_r$ is the valuation of the good in the foreign currency and α is a weighting parameter such that $α ∈[0,1]$. Importantly, RAS [@Raghubir2002] argue that $α > 0$ and that V is hence not equal to $V_r$ but is biased towards $V_n$.
+
+## Perceived Value of Money Model
+
+WER [@Wertenbroch2007] build on top of RAS, but put forth a different model that they argue is more representative of the behavior of actual consumers. Specifically, they agree with the standard model that valuations are made in relation to salient reference points, such as a consumers' budget, and argue that the model put forth by RAS fails to account for this. However, they disagree with the standard model that valuations use a ratio of price to budget, but instead argue that consumers think in terms of differneces. Hence, instead of considering what fraction of their purchasing power is required to buy a good, consumers consider how much of their budget is left over. However, WER argue that consumers inadequately adjust this difference to the exchange rate and are thus biased when considering goods in different currencies since the nominal differences between price and budget will differ when considering different currencies. This model can be formulated as follows:
+
+1. Formaulate valuation of good as difference to budget in home currency
+2. Convert the valuation into foreign currency
+3. Adjust using the difference to budget in the foreing currency
+
+Alternatively, this can be stated using the following syntax:
+
+$$V = α(M_r - V_r) + (1 - α)V_r$$
+
+where V is the valuation in the foreign currency, $V_n$ is the valuation of the good in the home currency (nominal), $V_r$ is the valuation of the good in the foreign currency, $M_r$ is the budget in the foreign currency (real) and α is a weighting parameter such that $α ∈[0,1]$. Importantly, WER [@Wertenbroch2007] argue that $α > 0$ and that V is hence not equal to $V_r$ but is biased towards $M_r - V_r$.
+
+## Predictions
+
+The three different models laid out above would each generate a different prediction in the following scenario, considering fraction and multiple exchange rates (the latter in brackets): a consumer values a good at £25 and needs to express this valuation in BlueCoin. The exchange rate of Pounds to BlueCoin is 1 BlueCoin = £5 (1 BlueCoin = £0.2) and their budget is 10 (250) BlueCoin. The models above would make the following predictions:
+
+- Standard model: $V_r = 5 (125) BlueCoin$
+- Face value effect model: $V_r > 5 (< 125) BlueCoin$
+- Perceived value of money model: $V_r < 5 (> 125) BlueCoin$
+
+where $V_r$ is the valuation of the good in the foreign currency.
+
+As a result:
+
+- Standard model: $V_rf = V_rm$
+- Face value effect model: $V_rf > V_rm$
+- Perceived value of money model: $V_rf < V_rm$
+
+where $V_rf$ is the valuation of the good in the foreign currency for the fraction group and $V_rm$ is the valuation of the good in the foreign currency for the multiple group.
+
+In other words, the standard model would expect the valuations to be the same across both exchange rates, the face value effect model would expect the consumer to overspend when presented with the fraction exchange rate and the perceived value of money model would expect the consumer to underspend when presented with the fraction exchange rate.
 
 # Method
 
@@ -73,7 +114,7 @@ There were 41 participants of the study, most of them current undergraduate stud
 
 The study itself was split into four parts: Consent Form, Introduction, Auction and Follow-Up Questions. The entire experiment instructions can be found in the [Experiment Instructions](./paper.qmd#experiment-instructions) section of the Appendix. The first section asked participants to read through and sign the consent form in order to ensure that they were informed about the study and what data would be collected. In the introductory section, the BDM mechanism was explained to participants and they were asked to complete four question that tested their understanding of the mechanism. The aim of this section was to ensure that participants properly understood how the mechanism worked in order to elicit their real WTP during the main part of the study. 
 
-The auction was the main part of the study, with the aim of eliciting the participants' WTP on a specific item and comparing these across different currencies used. In this section, participants were randomly split into two groups with almost-identical instructions. The participants were instructed to bid on the item shown below, a tabletop airhockey table, using the virtual currency "BlueCoin". The auction was explained to follow the BDM mechanism and it was also stated that three participants of the experiment would be randomly selected, their auction would be simulated and they would receive the outcome. The only difference between the groups was the exchange rate between BlueCoin and the British Pound (£) and the endowment that the participants received in BlueCoin. The first group received an endowment of 10 BlueCoin where one BlueCoin equals £5 and the second group recieved an endowment of 250 BlueCoin where one BlueCoin equals £0.2. To complete the auction, participants were asked to respond with their bid, in BlueCoin.
+The auction was the main part of the study, with the aim of eliciting the participants' WTP on a specific item and comparing these across different currencies used. In this section, participants were randomly split into two groups with almost-identical instructions. The participants were instructed to bid on the item shown below, a tabletop airhockey table, using the virtual currency "BlueCoin". The auction was explained to follow the BDM mechanism and it was also stated that three participants of the experiment would be randomly selected, their auction would be simulated and they would receive the outcome. The only difference between the groups was the exchange rate between BlueCoin and the British Pound (£) and the endowment that the participants received in BlueCoin. The first group received an endowment of 10 BlueCoin where 1 BlueCoin equals £5 and the second group recieved an endowment of 250 BlueCoin where 1 BlueCoin equals £0.2. To complete the auction, participants were asked to respond with their bid, in BlueCoin.
 
 The final part of the experiment consisted of optional follow-up questions that were used to determine if there are any trends in bidding behaviour based on some characteristics of the participants. The questions asked were about whether they had previously lived in a different country than the UK, how often they tend to travel outside of the UK and what their typical expenditure is in a given month. The intention behind the first two questions is to use them as a proxy for experience dealing with foreign currencies, where presumably people that travel frequently or have lived in multiple countries are more experienced with currency conversion calculations. The final question was asked to be able to determine whether there were any systematic differences in WTP based on a participants normal expenditure.
 
@@ -95,7 +136,7 @@ Another limitation of the study is the low sample size of 41 participants, which
 
 # Results
 
-There were 41 participants, 21 in the first group and 20 in the second. For consistency, I will refer to the first group as the fraction group, since 0.2 BlueCoin = £1, and the second as the multiple group, since 5 BlueCoin = £1, in line with the terminology used by RAS [@Raghubir2002]. To conduct the data analysis, I normalised the bids across both groups by converting them into pounds and computed the following summary statistics:
+There were 41 participants, 21 in the first group and 20 in the second. To conduct the data analysis, I have normalised the bids across both groups by converting them into pounds and computed the following summary statistics:
 
 ```{r}
 # Load the experiment data
@@ -197,7 +238,7 @@ summary(model_group_multiple)
 
 Based on this regression, there are no statistically significant correlations at the 5% significance level or lower. However, there is one correlation that is significant at the 10% significance level, namely of `expenditure£551-£700` on the multiple group. The coefficient of -43.487 suggests that people whose usual expenditure is between £551 and £700 per month bid lower than the group overall. However, given that this is only significant at the 10% level and not at any lower ones, it is likely that this correlation is due to the low sample size rather than representing a true correlation between these variables.
 
-# Discussion
+# Discussion 
 
 outline the results: 
 - group one bid lower on average; statistically significant (but only power of 20%)
