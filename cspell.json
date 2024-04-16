@@ -4,5 +4,20 @@
   "dictionaries": ["r"],
   "enabledLanguageIds": ["markdown", "r"],
   "useGitignore": true,
-  "words": ["xlab", "ylab", "numerosity"]
+  "words": [
+    "xlab",
+    "ylab",
+    "numerosity",
+    "Raghubir",
+    "Srivastava",
+    "Wertenbroch",
+    "Soman",
+    "Chattopadhyay",
+    "Marshak",
+    "Cohen",
+    "Qualtrics",
+    "refs",
+    "cohensD",
+    "Cohens"
+  ]
 }

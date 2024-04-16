@@ -32,22 +32,29 @@ t.test(
 # Conduct a regression analysis to examine the relationship between
 # the bid amounts and the demographic variables
 model_group_fraction <-
-  lm(group_fraction_bid_in_pounds ~ lived_abroad + travel_frequency + expenditure,
+  lm(
+    group_fraction_bid_in_pounds ~ lived_abroad +
+      travel_frequency + expenditure,
     data = experiment_data
   )
 summary(model_group_fraction)
 
 model_group_multiple <-
-  lm(group_multiple_bid_in_pounds ~ lived_abroad + travel_frequency + expenditure,
+  lm(
+    group_multiple_bid_in_pounds ~ lived_abroad +
+      travel_frequency + expenditure,
     data = experiment_data
   )
 summary(model_group_multiple)
 
-# Conduct a power analysis to determine the power of the t test and
-# sample size required for a power of 0.8 (80%)
+# Calculate the effect size (Cohens D)
 effect_size <- cohensD(
   experiment_data$group_fraction_bid_in_pounds,
   experiment_data$group_multiple_bid_in_pounds
 )
+
+# Find the power of the t test conducted above
 pwr.t2n.test(n1 = 21, n2 = 20, d = effect_size, sig.level = 0.05)
+
+# Find the sample size required to achieve a power of 0.8 (80%)
 pwr.t.test(power = 0.8, d = effect_size, sig.level = 0.05)
