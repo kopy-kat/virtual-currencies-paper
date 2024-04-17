@@ -20,7 +20,7 @@ keywords:
 
 # Introduction
 
-Experience suggests that we treat foreign currencies differently to our home currency and have difficulty adjusting to them. Previous research, such as the "money illusion" effect [@cite] suggests that individuals are biased towards the nominal (or face value) of prices. This bias has also been explored in the context foreign currencies, with research finding systematic effects that arise based on the numerousity of values in a foreign currency compared to individuals' home currencies. However, previous research is split on how and why this effect occurs. 
+Experience suggests that we treat foreign currencies differently to our home currency and have difficulty adjusting to them. Previous research, such as the "money illusion" effect [@Shafir1997] suggests that individuals are biased towards the nominal (or face value) of prices. This bias has also been explored in the context foreign currencies, with research finding systematic effects that arise based on the numerousity of values in a foreign currency compared to individuals' home currencies. However, previous research is split on how and why this effect occurs. 
 
 Raghubir and Srivastava [@Raghubir2002] examined the effect of using foreign currencies on consumption behaviour and argue that there is a systematic difference in spending behaviour based on the exchange rate of the foreign currency to an individuals' home currency. Specifically, they showed that when a foreign currency is a fraction of the home currency (e.g. 1 unit in home currency is 0.2 units in foreign currency) consumers tend to overspend in real terms relative to their home currency. On the other hand, when the foreign currency is a multiple of the home currency (e.g. 1 unit in home currency is 5 units in foreign currency) consumers tend to underspend in real terms.^[For consistency, I will use the terms fraction and multiple currencies throughout this paper as defined here.] Raghubir and Srivastava argue that this effect arises because individuals are anchored on the face value of the foreign currency which influences the exchange rate calculations from and to their home currencies. Hence, Raghubir and Srivastava term the result of this inadequate adjustment the "face value effect".
 
@@ -28,7 +28,7 @@ Wertenbroch, Soman and Chattopadhyay [@Wertenbroch2007] consider the findings by
 
 Fang [@Fang2019] further builds on top of the research by Raghubir and Srivastava and aims to extend it to the domain of "virtual" currencies, which refers to non-fiat currencies that are digital in nature and not controlled or issued by a central bank. Examples of virtual currencies include video game (or in-game) currencies, rewards points, airmiles, cryptocurrencies and more to the extent that these are at least somewhat liquid. Investigating in-game currencies specifically, Fang shows that consumer valuations systematically deviate when using these currencies relative to the home currency. Fang's findings correspond with those of Raghubir and Srivastava and the face value effect.
 
-This paper aims to build on the aforementioned research in several important ways. Foremost, previous research is conclusive that there is an effect that using foreign currencies has on individuals' consumption behaviour relative to using their home currencies, but is divided on the direction of this effect. Hence, this paper attempts to evaluate the different models posed and use a study to test which model most adequately predicts the perceived behaviour. Second, previous research has only assigned minor significance to using incentive-compatible mechanisms to elicit true preferences of participants. These mechanisms have been established to elicit more accurate responses from participants that are closer to their true preferences [@cite]. Hence, this study will use the Becker-DeGroot-Marshak (BDM) mechanism to elicit participants' willingness to pay (WTP).[^ The BDM mechanism will be defined and explained in more detail in the Methodology section below.] Raghubir and Srivastava [@Raghubir2002] expressed the concern that "despite attempts to make the tasks as realistic as possible, the studies reported were laboratory experiments, and issues of generalizability when real money is on the line do arise. For instance, when people actually exchange foreign currency they may feel richer or poorer depending on the exchange rate, and the differences in perceptions of wealth may affect product valuation". Similarly, Fang [@Fang2019] noted that implementing the BDM mechanism was infeasible for the study he conducted but that future research should focus on using something like it to elicit WTP. Finally, this paper aims to extend the previous literature on the effects of using virtual currencies specifically, due to their increasing rise in importance when transacting or making purchasing decisions online, and determine whether spending behaviour differs when using them. 
+This paper aims to build on the aforementioned research in several important ways. Foremost, previous research is conclusive that there is an effect that using foreign currencies has on individuals' consumption behaviour relative to using their home currencies, but is divided on the direction of this effect. Hence, this paper attempts to evaluate the different models posed and use a study to test which model most adequately predicts the perceived behaviour. Second, previous research has only assigned minor significance to using incentive-compatible mechanisms to elicit true preferences of participants. These mechanisms have been established to elicit more accurate responses from participants that are closer to their true preferences [@Burchardi2021]. Hence, this study will use the Becker-DeGroot-Marshak (BDM) mechanism to elicit participants' willingness to pay (WTP).^[ The BDM mechanism will be defined and explained in more detail in the Methodology section below.] Raghubir and Srivastava [@Raghubir2002] expressed the concern that "despite attempts to make the tasks as realistic as possible, the studies reported were laboratory experiments, and issues of generalizability when real money is on the line do arise. For instance, when people actually exchange foreign currency they may feel richer or poorer depending on the exchange rate, and the differences in perceptions of wealth may affect product valuation". Similarly, Fang [@Fang2019] noted that implementing the BDM mechanism was infeasible for the study he conducted but that future research should focus on using something like it to elicit WTP. Finally, this paper aims to extend the previous literature on the effects of using virtual currencies specifically, due to their increasing rise in importance when transacting or making purchasing decisions online, and determine whether spending behaviour differs when using them. 
 
 First, I present the theoretical frameworks that have been outlined by previous research in a standard form that makes it easy to compare and contrast them. These frameworks are the standard model described in consumer choice theory, the model suggested by Raghubir and Srivastava and the model suggested by Wertenbroch, Soman and Chattopadhyay. Then, I consider what each of these frameworks would predict in a concrete case and show that all three models come to different and mutually exclusive conclusions. In order to test which of these frameworks is most accurate in predicting observed behaviour, I conduct a study in which two groups each formulate their WTP for a specific good in an incentive compatible way, with the only difference between the groups being the exchange rate of the currency used to their home currency and, as a result, the numerousity of the values of their budget and bid. Analysing the study, I find that consumers tend to underspend when the foreign currency is a fraction and overspend when the foreign currency is a multiple, which is predicted by the model proposed by Wertenbroch, Soman and Chattopadhyay [@Wertenbroch2007]. However, due to the limited sample size of the study, this result is not statistically significant and does not have significant statistical power. In the discussion, I evaluate the implications of the findings for the theoretical frameworks outlined, consider alternative explanations for the perceived effect and argue that the model proposed by Wertenbroch, Soman and Chattopadhyay is the most accurate in predicting and describing consumer behaviour when using foreign currencies. Finally, I will consider the limitations of this paper and opportunities for further research.
 
@@ -36,7 +36,7 @@ First, I present the theoretical frameworks that have been outlined by previous 
 
 ## Standard Model
 
-Standard consumer choice theory suggests that individuals formulate valuations of goods in relation to reference points, such as their budget [@cite]. Specifically, standard theory poses that consumers evaluate their valuation for a good as a ratio to their budget in order to determine what proportion of their spending power is required to purchase the good. To formulate valuations of goods in a different currency, consumers would first determine the value of the good in their home currency and subsequently apply the exchange rate to get their valuation in the foreign currency. Hence, the model follows a two step process:
+Standard consumer choice theory suggests that individuals formulate valuations of goods in relation to reference points, such as their budget [@Deaton1980]. Specifically, standard theory poses that consumers evaluate their valuation for a good as a ratio to their budget in order to determine what proportion of their spending power is required to purchase the good. To formulate valuations of goods in a different currency, consumers would first determine the value of the good in their home currency and subsequently apply the exchange rate to get their valuation in the foreign currency. Hence, the model follows a two step process:
 
 1. Formulate valuation of good as ratio to budget in home currency
 2. Convert the valuation into foreign currency
@@ -114,13 +114,13 @@ Since the aim of the study was to determine whether there were any systematic di
 
 Another important decision in the design of the experiment was which item to select that a majority of participants would have a non-zero WTP. This is important since if the majority or even the entirety of participants were to bid zero on the item, then I would only learn that this was the participants' WTP for that good, but not whether there are any systematic differences in the WTP when using different currencies. Hence, I selected a tabletop airhockey table, something that few enough people have so that they would not not want another one, but enough people want with a non-zero WTP, especially among a student population. This turned out to be a good choice, since only six participants of the experiment stated a WTP of 0.
 
-In designing the main part of the experiment, I chose to conduct an auction, specifically using the BDM mechanism, in order to have an incentive-compatible method of eliciting the participants' WTP. The BDM's incentive compatibility in eliciting WTP is a well-established phenomenon that is superior to using participants' stated preferences [@cite]. The BDM is essentially a sealed-bid, second price auction that is, in its' most common variant, played against a computer drawing a bid from a known distribution. If the players' bid is greater than or equal to the computers' bid, they win and pay the computers' bid, otherwise they lose. As mentioned above, the studies conducted by Raghubir and Srivastava [@Raghubir2002], Wertenbroch, Soman and Chattopadhyay [@Wertenbroch2007] (with the exception of one permutation of one of the studies) and Fang [@Fang2019] did not implement incentive-compatible methods of eliciting the participants' preferences, making this experiment an important addition to these previous studies in examining whether the effects described still hold when a more truthful way of eliciting WTP is used. In order to incentivise the participants to participate, I ran a lottery that paid out three randomly-chosen participants based on their actual choices made in the auction and by simulating the BDM mechanism using a random number generator. Due to budget constraints, I was only able to play this lottery for three people, but given that the sample size of the experiment was relatively small, the potential to receive one's outcome is likely to have helped in eliciting the participants' true WTP.
+In designing the main part of the experiment, I chose to conduct an auction, specifically using the BDM mechanism, in order to have an incentive-compatible method of eliciting the participants' WTP. The BDM's incentive compatibility in eliciting WTP is a well-established phenomenon that is superior to using participants' stated preferences [@Burchardi2021]. The BDM is essentially a sealed-bid, second price auction that is, in its' most common variant, played against a computer drawing a bid from a known distribution. If the players' bid is greater than or equal to the computers' bid, they win and pay the computers' bid, otherwise they lose. As mentioned above, the studies conducted by Raghubir and Srivastava [@Raghubir2002], Wertenbroch, Soman and Chattopadhyay [@Wertenbroch2007] (with the exception of one permutation of one of the studies) and Fang [@Fang2019] did not implement incentive-compatible methods of eliciting the participants' preferences, making this experiment an important addition to these previous studies in examining whether the effects described still hold when a more truthful way of eliciting WTP is used. In order to incentivise the participants to participate, I ran a lottery that paid out three randomly-chosen participants based on their actual choices made in the auction and by simulating the BDM mechanism using a random number generator. Due to budget constraints, I was only able to play this lottery for three people, but given that the sample size of the experiment was relatively small, the potential to receive one's outcome is likely to have helped in eliciting the participants' true WTP.
 
 Finally, given the budget, I was able to give participants an endowment of £50 each, which was around double of what the item costs to buy. Assuming that the item is priced roughly around the average WTP (which turned out to be correct), this endowment was chosen to leave enough room for people with higher WTP to make their bid and to capture this in the data. This is important for the goals of the experiment, since if I had, for example, chosen an endowment of £20, the majority of participants might have bid their maximum amount, hindering my ability to meaningfully compare WTP across the two groups. I chose relatively simple exchange rates of 5 and $1/5$ so that the exchange rate calculations would be relatively easy to make, allowing me to be more confident that differences between groups were not due to the mental effort required to do calculations but due to something else. Raghubir and Srivastava [@Raghubir2002] acknowledge that "the reliance on face value may be a function of the ease with which the foreign money can be converted. ... Future research should examine the asymmetric and nonlinear nature of this effect". Since the goal of this study is to investigate that an effect exists that is not solely based on a high difficulty or large mental effort required when doing specific, difficult calculations, I aimed to make the calculations as easy as possible in order to isolate the effect of the exchange rate and nominal value of the foreign currency. Further, since the study was conducted online, participants were easily able to and allowed to use calculators for any part.
 
 ## Limitations
 
-In setting up the experiment, I incorrectly used the BDM mechanism. Instead of explaining it as a sealed-bid second-price auction, the experiment instructions explained it as a sealed-bid first-price auction. Unlike in a second-price auction, the participants of a first price auction do not have a (weakly) dominant strategy to bid their true valuations, in fact there generally is no dominant strategy in such an auction [@cite]. This is true even in this auction in which participants knew that they were bidding against a computer agent who would randomly draw a bid from a uniform distribution from 0-50, with an expected bid of 25. Indeed, the optimal strategy by participants was to choose their bid b by maximising their payoff p:
+In setting up the experiment, I incorrectly used the BDM mechanism. Instead of explaining it as a sealed-bid second-price auction, the experiment instructions explained it as a sealed-bid first-price auction. Unlike in a second-price auction, the participants of a first price auction do not have a (weakly) dominant strategy to bid their true valuations, in fact there generally is no dominant strategy in such an auction [@Noussair2004]. This is true even in this auction in which participants knew that they were bidding against a computer agent who would randomly draw a bid from a uniform distribution from 0-50, with an expected bid of 25. Indeed, the optimal strategy by participants was to choose their bid b by maximising their payoff p:
 
 $$\frac{b}{50} * u(x = 1, 50 - b) + (1 - \frac{b}{50}) * u(x = 0, 50)$$
 
@@ -139,10 +139,8 @@ experiment_data <-
 
 # Summary statistics for the bid columns
 summary(experiment_data$group_fraction_bid_in_pounds)
-sd(experiment_data$group_fraction_bid_in_pounds, na.rm = TRUE)
 
 summary(experiment_data$group_multiple_bid_in_pounds)
-sd(experiment_data$group_multiple_bid_in_pounds, na.rm = TRUE)
 ```
 
 Further, I plotted the following boxplot, in order to visually see the difference between the groups:
@@ -176,15 +174,19 @@ experiment_data <-
     read.csv("data/experiment_data_formatted.csv")
 
 # Perform a t-test to compare the means of the two groups
-t.test(
+t_test <- t.test(
     experiment_data$group_fraction_bid_in_pounds,
     experiment_data$group_multiple_bid_in_pounds
 )
+cat(paste("t =", t_test$statistic, "\n"))
+cat(paste("p-value =", t_test$p.value))
+cat("95 percent confidence interval: \n")
+cat(paste(t_test$conf.int))
 ```
 
 The t-value of -1.2323 suggests that there is a difference in the means between the groups and, since it is negative, that the mean of the fraction group is lower. However, the p-value is 0.2252, which is quite high. If we take the typical significance level of $α = 0.05$ we find that the p-value is higher than this value, and thus fail to reject the null hypothesis at the 5% significance level. Further, the 95% confidence interval is $[-15.401901, 3.740092]$ which includes 0, providing further evidence that the difference in means between the groups is not statistically significant. Thus, we must conclude that while there seems to be a difference in means based on the sample data, this difference is not statistically significant for this sample size.
 
-To investigate this further, I have conducted a power analysis in order to determine the power of the t-test, which refers to the likelihood of the test detecting a true positive when an effect actually exists [@cite]. High power would indicate that this likelihood is high and vice versa. To conduct the analysis, we first need to find the effect size, or Cohen's D, and then implement the power analysis. Further, I will also conduct an analysis that investigates how big the sample size should have been to get a power of 80%, which is a generally accepted threshold for significant power.
+To investigate this further, I have conducted a power analysis in order to determine the power of the t-test, which refers to the likelihood of the test detecting a true positive when an effect actually exists. High power would indicate that this likelihood is high and vice versa. To conduct the analysis, we first need to find the effect size, or Cohen's D, and then implement the power analysis. Further, I will also conduct an analysis that investigates how big the sample size should have been to get a power of 80%, which is a generally accepted threshold for significant power.
 
 ```{r}
 # Load the required libraries
@@ -211,33 +213,7 @@ pwr.t.test(power = 0.8, d = effect_size, sig.level = 0.05)
 
 Based on the first test with the same significance level of 0.05, we can see that the power is 0.2246363 or 22%, which means that there is only a 22% likelihood of detecting a true positive if an effect actually exists. In other words, the likelihood of detecting a true difference in means between the two groups, when this difference exists, is only 22%, which is far below the usual value of 80%. The second test takes in this power of 80% and calculates the required sample size at the observed effect size. The result is $n = 107$ where the sample size is $2n$ or 214. Hence, using a sample size of 214 and observing the same effect, this t-test would yield a power of 80% at the 5% significance level.
 
-Finally, I conducted a regression of the demographic values collected in the fourth part of the experiment on the bids of each group. This is done in order to determine whether there is any correlation between the demographic variables and the bid amount, which would suggest that randomisation did not occur correctly, which could have been exacerbated by the small sample size. The regression yields the following outcomes:
-
-```{r}
-# Load the experiment data
-experiment_data <-
-    read.csv("data/experiment_data_formatted.csv")
-
-# Conduct a regression analysis to examine the relationship between
-# the bid amounts and the demographic variables
-model_group_fraction <-
-    lm(
-        group_fraction_bid_in_pounds ~ lived_abroad +
-            travel_frequency + expenditure,
-        data = experiment_data
-    )
-summary(model_group_fraction)
-
-model_group_multiple <-
-    lm(
-        group_multiple_bid_in_pounds ~ lived_abroad +
-            travel_frequency + expenditure,
-        data = experiment_data
-    )
-summary(model_group_multiple)
-```
-
-Based on this regression, there are no statistically significant correlations at the 5% significance level or lower. However, there is one correlation that is significant at the 10% significance level, namely of `expenditure£551-£700` on the multiple group. The coefficient of -43.487 suggests that people whose usual expenditure is between £551 and £700 per month bid lower than the group overall. However, given that this is only significant at the 10% level and not at any lower ones, it is likely that this correlation is due to the low sample size rather than it representing a true correlation between these variables.
+Finally, I conducted a regression of the demographic values collected in the fourth part of the experiment on the bids of each group. This is done in order to determine whether there is any correlation between the demographic variables and the bid amount, which would suggest that randomisation did not occur correctly, which could have been exacerbated by the small sample size.^[ For brevity, the regression output has been moved into the appendix.] Based on this regression, there are no statistically significant correlations at the 5% significance level or lower. However, there is one correlation that is significant at the 10% significance level, namely of `expenditure£551-£700` on the multiple group. The coefficient of -43.487 suggests that people whose usual expenditure is between £551 and £700 per month bid lower than the group overall. However, given that this is only significant at the 10% level and not at any lower ones, it is likely that this correlation is due to the low sample size rather than it representing a true correlation between these variables.
 
 # Discussion 
 
@@ -269,9 +245,35 @@ Future research could build on this study and its' findings in several important
 
 # Appendix {.appendix}
 
+## Regression output
+
+```{r}
+# Load the experiment data
+experiment_data <-
+    read.csv("data/experiment_data_formatted.csv")
+
+# Conduct a regression analysis to examine the relationship between
+# the bid amounts and the demographic variables
+model_group_fraction <-
+    lm(
+        group_fraction_bid_in_pounds ~ lived_abroad +
+            travel_frequency + expenditure,
+        data = experiment_data
+    )
+summary(model_group_fraction)
+
+model_group_multiple <-
+    lm(
+        group_multiple_bid_in_pounds ~ lived_abroad +
+            travel_frequency + expenditure,
+        data = experiment_data
+    )
+summary(model_group_multiple)
+```
+
 ## Experiment Instructions
 
-![Consent](experiment_instructions/consent.png)
+{{< pagebreak >}}
 
 ![Instructions](experiment_instructions/instructions.png)
 
