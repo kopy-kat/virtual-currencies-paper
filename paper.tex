@@ -51,6 +51,46 @@
   \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
 \fi
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -207,7 +247,9 @@ exclusive outcomes. This paper considers the different models and tests
 their predictive and explanatory accuracy using a study. It finds that
 individuals tend to underspend when the foreign currency is less
 numerous than (a fraction of) the home currency and overspend when the
-opposite is the case.
+opposite is the case. The paper discusses which model is most accurate
+at predicting and explaining this effect and considers limitations as
+well as opportunities for future research.
 \end{abstract}
 
 \renewcommand*\contentsname{Table of contents}
@@ -218,55 +260,64 @@ opposite is the case.
 }
 \chapter{Introduction}\label{introduction}
 
-Past experience suggests that we treat foreign currencies differently to
-our home currency and have difficulty adjusting to them. Previous
-research, such as the ``money illusion'' effect suggests that
+Experience suggests that we treat foreign currencies differently to our
+home currency and have difficulty adjusting to them. Previous research,
+such as the ``money illusion'' effect (\textbf{cite?}) suggests that
 individuals are biased towards the nominal (or face value) of prices.
-Past research has investigated whether a systemic effect
+This bias has also been explored in the context foreign currencies, with
+research finding systematic effects that arise based on the numerousity
+of values in a foreign currency compared to individuals' home
+currencies. However, previous research is split on how and why this
+effect occurs.
 
-RAS (Raghubir and Srivastava 2002) examined the effect of using foreign
-currencies on consumption behaviour and argue that there is a systematic
-difference in spending behaviour based on the exchange rate of the
-foreign currency to an individuals' home currency. Specifically, they
-showed that when a foreign currency is a fraction of the home currency
-(e.g.~1 unit in home currency is 0.2 units in foreign currency)
-consumers tend to overspend in real terms relative to their home
-currency. On the other hand, when the foreign currency is a multiple of
-the home currency (e.g.~1 unit in home currency is 5 units in foreign
-currency) consumers tend to underspend in real terms.\footnote{For
-  consistency, I will use the terms fraction and multiple currencies
-  throughout this paper as defined here.} RAS argue that this effect
-arises because individuals are anchored on the face value of the foreign
-currency which influences the exchange rate calculations from and to
-their home currencies. Hence, RAS term the result of this inadequate
-adjustment the face value effect.
+Raghubir and Srivastava (Raghubir and Srivastava 2002) examined the
+effect of using foreign currencies on consumption behaviour and argue
+that there is a systematic difference in spending behaviour based on the
+exchange rate of the foreign currency to an individuals' home currency.
+Specifically, they showed that when a foreign currency is a fraction of
+the home currency (e.g.~1 unit in home currency is 0.2 units in foreign
+currency) consumers tend to overspend in real terms relative to their
+home currency. On the other hand, when the foreign currency is a
+multiple of the home currency (e.g.~1 unit in home currency is 5 units
+in foreign currency) consumers tend to underspend in real
+terms.\footnote{For consistency, I will use the terms fraction and
+  multiple currencies throughout this paper as defined here.} Raghubir
+and Srivastava argue that this effect arises because individuals are
+anchored on the face value of the foreign currency which influences the
+exchange rate calculations from and to their home currencies. Hence,
+Raghubir and Srivastava term the result of this inadequate adjustment
+the ``face value effect''.
 
-WER (Wertenbroch, Soman, and Chattopadhyay 2007) consider the findings
-by RAS and reiterate their conclusion that individuals inadequately
-calculate the values of goods between differnet currencies, leading to
-systematic differences in spending behaviour based on the exchange rate
-between the foreign and home currencies. However, WER argue that the
-process of adjustment occurs differently, namely that individuals
-calculate their valuations of goods based on salient reference points,
-such as budget constraints. Contrary to standard theory, WER argue that
+Wertenbroch, Soman and Chattopadhyay (Wertenbroch, Soman, and
+Chattopadhyay 2007) consider the findings by Raghubir and Srivastava and
+reiterate their conclusion that individuals inadequately calculate the
+values of goods between differnet currencies, leading to systematic
+differences in spending behaviour based on the exchange rate between the
+foreign and home currencies. However, Wertenbroch, Soman and
+Chattopadhyay argue that the process of adjustment occurs differently,
+namely that individuals calculate their valuations of goods based on
+salient reference points, such as budget constraints. Contrary to
+standard theory, Wertenbroch, Soman and Chattopadhyay argue that
 consumers care about the difference between a valuation and their budget
 rather than the ratio of the two. In the context of foreign currencies,
 the nominal value of this difference will diverge, leading to systematic
 differences in spending behaviour. However, the direction of this bias
-is the exact opposite of the one shown by RAS. Specifically, WER show
-that consumers underspend when the foreign currency is a fraction of the
-home currency and overspend in the opposite case.
+is the exact opposite of the one shown by Raghubir and Srivastava.
+Specifically, Wertenbroch, Soman and Chattopadhyay show that consumers
+underspend when the foreign currency is a fraction of the home currency
+and overspend in the opposite case.
 
-Fang (Fang 2019) further builds on top of the research by RAS and aims
-to extend it to the domain of ``virtual'' currencies, which refers to
-non-fiat currencies that are digital in nature and not controlled and
-issued by a central bank. Examples of virtual currencies include video
-game (or in-game) currencies, rewards points, airmiles, cryptocurrencies
-and more to the extent that these are at least somewhat liquid.
-Investigating in-game currencies specifically, Fang shows that consumer
-valuations systematically deviate when using these currencies relative
-to the home currency. Fang's findings correspond with those of RAS and
-the face value effect.
+Fang (Fang 2019) further builds on top of the research by Raghubir and
+Srivastava and aims to extend it to the domain of ``virtual''
+currencies, which refers to non-fiat currencies that are digital in
+nature and not controlled or issued by a central bank. Examples of
+virtual currencies include video game (or in-game) currencies, rewards
+points, airmiles, cryptocurrencies and more to the extent that these are
+at least somewhat liquid. Investigating in-game currencies specifically,
+Fang shows that consumer valuations systematically deviate when using
+these currencies relative to the home currency. Fang's findings
+correspond with those of Raghubir and Srivastava and the face value
+effect.
 
 This paper aims to build on the aforementioned research in several
 important ways. Foremost, previous research is conclusive that there is
@@ -282,42 +333,47 @@ participants that are closer to their true preferences (\textbf{cite?}).
 Hence, this study will use the Becker-DeGroot-Marshak (BDM) mechanism to
 elicit participants' willingness to pay (WTP).{[}\^{} The BDM mechanism
 will be defined and explained in more detail in the Methodology section
-below.{]} RAS (Raghubir and Srivastava 2002) expressed the concern that
-``despite attempts to make the tasks as realistic as possible, the
-studies reported were laboratory experiments, and issues of
-generalizability when real money is on the line do arise. For instance,
-when people actually exchange foreign currency they may feel richer or
-poorer depending on the exchange rate, and the differences in
-perceptions of wealth may affect product valuation''. Similarly, Fang
-(Fang 2019) noted that implementing the BDM mechanism was infeasible for
-the study he conducted but that future research should focus on using
-something like it to elicit WTP. Finally, this paper aims to extend the
-previous literature on the effects of using virtual currencies
-specifically, due to their increasing rise in importance when
-transacting or making purchasing decisions online.
+below.{]} Raghubir and Srivastava (Raghubir and Srivastava 2002)
+expressed the concern that ``despite attempts to make the tasks as
+realistic as possible, the studies reported were laboratory experiments,
+and issues of generalizability when real money is on the line do arise.
+For instance, when people actually exchange foreign currency they may
+feel richer or poorer depending on the exchange rate, and the
+differences in perceptions of wealth may affect product valuation''.
+Similarly, Fang (Fang 2019) noted that implementing the BDM mechanism
+was infeasible for the study he conducted but that future research
+should focus on using something like it to elicit WTP. Finally, this
+paper aims to extend the previous literature on the effects of using
+virtual currencies specifically, due to their increasing rise in
+importance when transacting or making purchasing decisions online, and
+determine whether spending behaviour differs when using them.
 
 First, I present the theoretical frameworks that have been outlined by
-previous research in a way that makes it easy to compare and contrast
-them. These frameworks are the standard model described in consumer
-choice theory, the model suggested by RAS and the model suggested by
-WER. Then, I consider what each of these frameworks would predict in a
-concrete case and show that all three models come to different and
-mutually exclusive conclusions. In order to test which of these
-frameworks is most accurate in predicting observed behaviour, I conduct
-a study in which two groups each formulate their WTP for a specific good
-in an incentive compatible way, with the only difference between the
-groups being the exchange rate of the currency used to their home
-currency and, as a result, the face values of their budget and bid.
-Analysing the study, I find that consumers tend to underspend when the
-foreign currency is a fraction and overspend when the foreign currency
-is a multiple, which is predicted by the module proposed by WER.
-However, due to the limited sample size of the study, this result is not
-statistically significant and does not have significant power. Finally,
-in the discussion, I will evaluate the implications of the findings for
-the theoretical frameworks outlined, consider alternative explanations
-for the perceived effect and argue that the model proposed by WER is the
-most accurate in predicting and describing consumer behaviour when using
-foreign currencies.
+previous research in a standard form that makes it easy to compare and
+contrast them. These frameworks are the standard model described in
+consumer choice theory, the model suggested by Raghubir and Srivastava
+and the model suggested by Wertenbroch, Soman and Chattopadhyay. Then, I
+consider what each of these frameworks would predict in a concrete case
+and show that all three models come to different and mutually exclusive
+conclusions. In order to test which of these frameworks is most accurate
+in predicting observed behaviour, I conduct a study in which two groups
+each formulate their WTP for a specific good in an incentive compatible
+way, with the only difference between the groups being the exchange rate
+of the currency used to their home currency and, as a result, the
+numerousity of the values of their budget and bid. Analysing the study,
+I find that consumers tend to underspend when the foreign currency is a
+fraction and overspend when the foreign currency is a multiple, which is
+predicted by the model proposed by Wertenbroch, Soman and Chattopadhyay
+(Wertenbroch, Soman, and Chattopadhyay 2007). However, due to the
+limited sample size of the study, this result is not statistically
+significant and does not have significant statistical power. In the
+discussion, I evaluate the implications of the findings for the
+theoretical frameworks outlined, consider alternative explanations for
+the perceived effect and argue that the model proposed by Wertenbroch,
+Soman and Chattopadhyay is the most accurate in predicting and
+describing consumer behaviour when using foreign currencies. Finally, I
+will consider the limitations of this paper and opportunities for
+further research.
 
 \chapter{Theoretical Framework}\label{theoretical-framework}
 
@@ -326,9 +382,9 @@ foreign currencies.
 Standard consumer choice theory suggests that individuals formulate
 valuations of goods in relation to reference points, such as their
 budget (\textbf{cite?}). Specifically, standard theory poses that
-consumers evaluate their valuation for a good as a ratio with the budget
+consumers evaluate their valuation for a good as a ratio to their budget
 in order to determine what proportion of their spending power is
-required to purchase the good. To formaulate valuations of goods in a
+required to purchase the good. To formulate valuations of goods in a
 different currency, consumers would first determine the value of the
 good in their home currency and subsequently apply the exchange rate to
 get their valuation in the foreign currency. Hence, the model follows a
@@ -338,7 +394,7 @@ two step process:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Formaulate valuation of good as ratio to budget in home currency
+  Formulate valuation of good as ratio to budget in home currency
 \item
   Convert the valuation into foreign currency
 \end{enumerate}
@@ -347,12 +403,13 @@ Alternatively, this can be stated using the following syntax:
 
 \[V_n = f(\dfrac{x}{M_n})\] \[V = V_n * X = V_r\]
 
-where V is the valuation in the foreign currency, \(V_n\) is the
-valuation of the good in the home currency (nominal), \(V_r\) is the
+where V is the valuation of the good in the foreign currency, \(V_n\) is
+the valuation of the good in the home currency (nominal), \(V_r\) is the
 valuation of the good in the foreign currency, \(M_n\) is the budget in
 the home currency, X is the exchange rate and \(f(x)\) is some function
 that uses a valuation relative to the budget in order to compute
-\(V_n\).
+\(V_n\). Note that \(V_r\) is simply \(V_n\) multiplied by the exchange
+rate, whereas V need not always be identical to \(V_r\).
 
 One assumption that is implicit in this model is that a consumer will
 always correctly adjust their valuation ratio based on the exact
@@ -362,7 +419,7 @@ the effort of a consumer to always use the most up-to-date exchange
 rate, but rather to use some approximate value. Further, when an
 individual needs to do these exchange rate calculations in their head,
 it might not be worth the mental effort to calculate the amount in the
-foreign currency perfectly, but an approximation might be fine. For
+foreign currency perfectly, but an approximation might suffice. For
 example, it would be rational to multiply an amount in home currency by
 1.2 if the real exchange rate is 1.2113248 and the effort required is
 significant, such as when attempting to calculate it in one's hand. By
@@ -372,16 +429,16 @@ currency.
 
 \section{Face Value Effect Model}\label{face-value-effect-model}
 
-RAS (Raghubir and Srivastava 2002) put forth a different model for how
-consumers formulate their valuation of a good in a foreign currency
-based on their studies conducted. Specifically, they pose that a
-consumer will first formulate a valuation of a good in their home
-currency, before converting that amount into the foreign currency using
-the exchange rate. However, they argue that this calculation is biased
-by the nominal value of the good in the home currency (in cases where a
-consumer does not determine their valuation but observes a price, this
-calculation would be biased by the nominal value of the good in the
-foreign currency). This model may be formulated as follows:
+Raghubir and Srivastava (Raghubir and Srivastava 2002) put forth a
+different model for how consumers formulate their valuation of a good in
+a foreign currency based on their studies conducted. Specifically, they
+pose that a consumer will first formulate a valuation of a good in their
+home currency, before converting that amount into the foreign currency
+using the exchange rate. However, they argue that this calculation is
+biased by the nominal value of the good in the home currency (in cases
+where a consumer does not determine their valuation but observes a
+price, this calculation would be biased by the nominal value of the good
+in the foreign currency). This model may be formulated as follows:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -398,37 +455,37 @@ Alternatively, this can be stated using the following syntax:
 
 \[V = α(V_n) + (1 - α)V_r\]
 
-where V is the valuation in the foreign currency, \(V_n\) is the
-valuation of the good in the home currency (nominal), \(V_r\) is the
-valuation of the good in the foreign currency and α is a weighting
-parameter such that \(α ∈[0,1]\). Importantly, RAS (Raghubir and
-Srivastava 2002) argue that \(α > 0\) and that V is hence not equal to
-\(V_r\) but is biased towards \(V_n\).
+where α is a weighting parameter such that \(α ∈[0,1]\). Importantly,
+Raghubir and Srivastava (Raghubir and Srivastava 2002) argue that
+\(α > 0\) and that V is hence not equal to \(V_r\) but is biased towards
+\(V_n\).
 
 \section{Perceived Value of Money
 Model}\label{perceived-value-of-money-model}
 
-WER (Wertenbroch, Soman, and Chattopadhyay 2007) build on top of RAS,
-but put forth a different model that they argue is more representative
-of the behaviour of actual consumers. Specifically, they agree with the
+Wertenbroch, Soman and Chattopadhyay (Wertenbroch, Soman, and
+Chattopadhyay 2007) build on top of Raghubir and Srivastava, but put
+forth a different model that they argue is more representative of the
+behaviour of actual consumers. Specifically, they agree with the
 standard model that valuations are made in relation to salient reference
 points, such as a consumers' budget, and argue that the model put forth
-by RAS fails to account for this. However, they disagree with the
-standard model that valuations use a ratio of price to budget, but
-instead argue that consumers think in terms of differences. Hence,
-instead of considering what fraction of their purchasing power is
+by Raghubir and Srivastava fails to account for this. However, they
+disagree with the standard model that valuations use a ratio of price to
+budget, but instead argue that consumers think in terms of differences.
+Hence, instead of considering what fraction of their purchasing power is
 required to buy a good, consumers consider how much of their budget is
-left over. However, WER argue that consumers inadequately adjust this
-difference to the exchange rate and are thus biased when considering
-goods in different currencies since the nominal differences between
-price and budget will differ when considering different currencies. This
-model can be formulated as follows:
+left over. However, Wertenbroch, Soman and Chattopadhyay argue that
+consumers inadequately adjust this difference to the exchange rate and
+are thus biased when considering goods in different currencies since the
+nominal differences between price and budget will differ when
+considering different currencies. This model can be formulated as
+follows:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Formaulate valuation of good as difference to budget in home currency
+  Formulate valuation of good as difference to budget in home currency
 \item
   Convert the valuation into foreign currency
 \item
@@ -439,23 +496,20 @@ Alternatively, this can be stated using the following syntax:
 
 \[V = α(M_r - V_r) + (1 - α)V_r\]
 
-where V is the valuation in the foreign currency, \(V_n\) is the
-valuation of the good in the home currency (nominal), \(V_r\) is the
-valuation of the good in the foreign currency, \(M_r\) is the budget in
-the foreign currency (real) and α is a weighting parameter such that
-\(α ∈[0,1]\). Importantly, WER (Wertenbroch, Soman, and Chattopadhyay
-2007) argue that \(α > 0\) and that V is hence not equal to \(V_r\) but
-is biased towards \(M_r - V_r\).
+where \(M_r\) is the budget in the foreign currency (real). Importantly,
+Wertenbroch, Soman and Chattopadhyay (Wertenbroch, Soman, and
+Chattopadhyay 2007) argue that \(α > 0\) and that V is hence not equal
+to \(V_r\) but is biased towards \(M_r - V_r\).
 
 \section{Predictions}\label{predictions}
 
 The three different models laid out above would each generate a
 different prediction in the following scenario, considering fraction and
 multiple exchange rates (the latter in brackets): a consumer values a
-good at £25 and needs to express this valuation in BlueCoin. The
-exchange rate of Pounds to BlueCoin is 1 BlueCoin = £5 (1 BlueCoin =
-£0.2) and their budget is 10 (250) BlueCoin. The models above would make
-the following predictions:
+good at £25 and needs to express this valuation in BlueCoin, a fictional
+currency. The exchange rate of Pounds to BlueCoin is 1 BlueCoin = £5 (1
+BlueCoin = £0.2) and their budget is 10 (250) BlueCoin. The models above
+would make the following predictions:
 
 \begin{itemize}
 \tightlist
@@ -466,8 +520,6 @@ the following predictions:
 \item
   Perceived value of money model: \(V_r < 5 (> 125) BlueCoin\)
 \end{itemize}
-
-where \(V_r\) is the valuation of the good in the foreign currency.
 
 As a result:
 
@@ -488,45 +540,48 @@ foreign currency for the multiple group.
 In other words, the standard model would expect the valuations to be the
 same across both exchange rates, the face value effect model would
 expect the consumer to overspend when presented with the fraction
-exchange rate and the perceived value of money model would expect the
-consumer to underspend when presented with the fraction exchange rate.
+exchange rate (and vice-versa) and the perceived value of money model
+would expect the consumer to underspend when presented with the fraction
+exchange rate (and vice-versa).
 
 \chapter{Method}\label{method}
 
-There were 41 participants of the study, most of them current
-undergraduate students at the University of Oxford, but some
-participants were also recent graduates and postgraduate students. The
-study took place online, using Qualtrics, and students were incentivised
-to participate by taking part in a lottery, which will be explained in
-further detail below.
+To test which model is most accurate in predicting and explaining
+consumption behaviour, I conducted an online study. There were 41
+participants in the study, most of them current undergraduate students
+at the University of Oxford, but some participants were also recent
+graduates and postgraduate students. The study took place online, using
+Qualtrics, and students were incentivised to participate by taking part
+in a lottery, which will be explained in further detail below.
 
 \section{Study}\label{study}
 
-The study itself was split into four parts: Consent Form, Introduction,
-Auction and Follow-Up Questions. The entire experiment instructions can
-be found in the Experiment Instructions section of the Appendix. The
-first section asked participants to read through and sign the consent
-form in order to ensure that they were informed about the study and what
-data would be collected. In the introductory section, the BDM mechanism
-was explained to participants and they were asked to complete four
-question that tested their understanding of the mechanism. The aim of
-this section was to ensure that participants properly understood how the
-mechanism worked in order to elicit their real WTP during the main part
-of the study.
+The study itself was a survey split into four parts: consent,
+introduction, auction and follow-up Questions. The entire experiment
+instructions can be found in the Experiment Instructions section of the
+Appendix. The first section asked participants to read through and sign
+the consent form in order to ensure that they were informed about the
+study and what data would be collected. In the introductory section, the
+BDM mechanism was explained to participants and they were asked to
+complete four question that tested their understanding of the mechanism.
+The aim of this section was to ensure that participants properly
+understood how the mechanism worked in order to elicit their true WTP
+during the main part of the study.
 
 The auction was the main part of the study, with the aim of eliciting
 the participants' WTP on a specific item and comparing these across
-different currencies used. In this section, participants were randomly
-split into two groups with almost-identical instructions. The
-participants were instructed to bid on the item shown below, a tabletop
+different exchange rates used. In this section, participants were
+randomly split into two groups with almost-identical instructions. The
+participants were instructed to bid on an item shown below, a tabletop
 airhockey table, using the virtual currency ``BlueCoin''. The auction
 was explained to follow the BDM mechanism and it was also stated that
-three participants of the experiment would be randomly selected, their
-auction would be simulated and they would receive the outcome. The only
-difference between the groups was the exchange rate between BlueCoin and
-the British Pound (£) and the endowment that the participants received
-in BlueCoin. The first group received an endowment of 10 BlueCoin where
-1 BlueCoin equals £5 and the second group received an endowment of 250
+three participants of the experiment would be randomly selected for
+their auction to be simulated and to receive the outcome (either their
+budget in Pounds or the item and remaining budget). The only difference
+between the groups was the exchange rate between BlueCoin and the
+British Pound (£) and the endowment that the participants received in
+BlueCoin. The first group received an endowment of 10 BlueCoin where 1
+BlueCoin equals £5 and the second group received an endowment of 250
 BlueCoin where 1 BlueCoin equals £0.2. To complete the auction,
 participants were asked to respond with their bid, in BlueCoin.
 
@@ -547,91 +602,117 @@ differences in WTP based on a participants normal expenditure.
 
 Since the aim of the study was to determine whether there were any
 systematic differences in WTP between consumers when the only differing
-factor is the currency used, we decided to not include a control group
-that bid on the item using Pounds, which was the design of some of the
-experiments run by RAS (Raghubir and Srivastava 2002). This allowed for
-a simpler design and more power given the same sample size. Further,
-unlike the studies run by RAS (Raghubir and Srivastava 2002) and WER
-(Wertenbroch, Soman, and Chattopadhyay 2007), we did not use a fiat
-currency or mix of fiat and fictional currencies, but used only one
-fictional currency for both groups. On the one hand, this simplification
-was due to a focus of wether the effects described in previous papers
-also held in similar ways for virtual currencies. On the other hand, it
-also allowed us to preclude any biases or previous experience that
-participants might have had towards or with certain currencies. RAS
-(Raghubir and Srivastava 2002) acknowledge that ``the face value effect
-is due to the accessibility and perceptual salience of the face value of
-the foreign currency \ldots{} {[}which{]} is likely to depend on the
-extent to which an individual has the opportunity or the time available
-to process exchange rate information and/or has experience in using a
-particular foreign currency''. To bias participants the least, we chose
-the relatively nondescript name for a fictional, virtual currency:
-BlueCoin.
+factor is the numerousity of the currency used, I decided to not include
+a control group that bid on the item using Pounds, which was the design
+of some of the experiments run by Raghubir and Srivastava (Raghubir and
+Srivastava 2002). This allowed for a simpler design and more power given
+the same sample size. Further, unlike the studies run by Raghubir and
+Srivastava (Raghubir and Srivastava 2002) and Wertenbroch, Soman and
+Chattopadhyay (Wertenbroch, Soman, and Chattopadhyay 2007), I did not
+use a fiat currency or mix of fiat and virtual currencies, but used only
+one virtual currency for both groups. On the one hand, this
+simplification was due to a focus of wether the effects described in
+previous papers also held in similar ways for virtual currencies. On the
+other hand, it also allowed me to preclude any biases or previous
+experience that participants might have had towards or with certain
+currencies. Raghubir and Srivastava (Raghubir and Srivastava 2002)
+acknowledge that ``the face value effect is due to the accessibility and
+perceptual salience of the face value of the foreign currency \ldots{}
+{[}which{]} is likely to depend on the extent to which an individual has
+the opportunity or the time available to process exchange rate
+information and/or has experience in using a particular foreign
+currency''. Further, Alter and Oppenheimer (Alter and Oppenheimer 2008)
+show that people use ``familiarity and fluency'' when valuing goods in
+different currencies. To bias participants the least, I chose the
+relatively nondescript name for a fictional, virtual currency: BlueCoin.
 
 Another important decision in the design of the experiment was which
 item to select that a majority of participants would have a non-zero
 WTP. This is important since if the majority or even the entirety of
-participants were to bid zero on the item, then we would only learn that
+participants were to bid zero on the item, then I would only learn that
 this was the participants' WTP for that good, but not whether there are
 any systematic differences in the WTP when using different currencies.
-Hence, we selected a tabletop airhockey table, something that few enough
-people have so that they won't want another one, but enough people want
-with a non-zero WTP, especially among a student population. In fact,
-only six participants of the experiment stated a WTP of 0.
+Hence, I selected a tabletop airhockey table, something that few enough
+people have so that they would not not want another one, but enough
+people want with a non-zero WTP, especially among a student population.
+This turned out to be a good choice, since only six participants of the
+experiment stated a WTP of 0.
 
-In designing the main part of the experiment, we chose to conduct an
+In designing the main part of the experiment, I chose to conduct an
 auction, specifically using the BDM mechanism, in order to have an
 incentive-compatible method of eliciting the participants' WTP. The
 BDM's incentive compatibility in eliciting WTP is a well-established
 phenomenon that is superior to using participants' stated preferences
-(\textbf{cite?}). As mentioned above, the studies conducted by RAS
-(Raghubir and Srivastava 2002), WER (Wertenbroch, Soman, and
-Chattopadhyay 2007) (with the exception of one permutation of one of the
-studies) and Fang (Fang 2019) did not implement incentive-compatible
-methods of eliciting the participants' preferences, making this
-experiment and important addition to these previous studies in examining
-whether the effects describe still hold when a more accurate way of
-eliciting WTP is used. In order to incentivise the participants even
-further, we ran a lottery that paid out three randomly-chosen
-participants based on their actual choices made in the auction and by
-simulating the BDM mechanism using a random number generator. Due to
-budget constraints, we were only able to play this lottery for three
-people, but given that the sample size of the experiment was relatively
-small, the potential to receive one's outcome is likely to have helped
-in eliciting the participants' true WTP.
+(\textbf{cite?}). The BDM is essentially a sealed-bid, second price
+auction that is, in its' most common variant, played against a computer
+drawing a bid from a known distribution. If the players' bid is greater
+than or equal to the computers' bid, they win and pay the computers'
+bid, otherwise they lose. As mentioned above, the studies conducted by
+Raghubir and Srivastava (Raghubir and Srivastava 2002), Wertenbroch,
+Soman and Chattopadhyay (Wertenbroch, Soman, and Chattopadhyay 2007)
+(with the exception of one permutation of one of the studies) and Fang
+(Fang 2019) did not implement incentive-compatible methods of eliciting
+the participants' preferences, making this experiment an important
+addition to these previous studies in examining whether the effects
+described still hold when a more truthful way of eliciting WTP is used.
+In order to incentivise the participants to participate, I ran a lottery
+that paid out three randomly-chosen participants based on their actual
+choices made in the auction and by simulating the BDM mechanism using a
+random number generator. Due to budget constraints, I was only able to
+play this lottery for three people, but given that the sample size of
+the experiment was relatively small, the potential to receive one's
+outcome is likely to have helped in eliciting the participants' true
+WTP.
 
-Finally, given our budget, we were able to give participants an
-endowment of £50 each, which was around double of what the item costs to
-buy. Assuming that the item is priced roughly around the average WTP
-(which turned out to be correct), this endowment was chosen to leave
-enough room for people with higher WTP to make their bid and for us to
-capture this in the data. This is important for the goals of the
-experiment, since if we had, for example, chosen an endowment of £20,
-the majority of participants might have bid their maximum amount,
-hindering our ability to meaningfully compare WTP across the two groups.
-We chose relatively simple exchange rates of 5 and \(1/5\) so that the
-exchange rate calculations would be relatively easy to make, allowing us
-to be more confident that differences between groups were not due to the
-mental effort required to do calculations but due to something else. RAS
-(Raghubir and Srivastava 2002) acknowledge that ``the reliance on face
-value may be a function of the ease with which the foreign money can be
-converted. \ldots{} Future research should examine the asymmetric and
-nonlinear nature of this effect''. Since the goal of this study is to
-investigate that an effect exists that is not solely based on a high
-difficulty or large mental effort required when doing specific,
-difficult calculations, we aimed to make the calculations as easy as
-possible in order to isolate the effect of the exchange rate and nominal
-value of the foreign currency.
+Finally, given the budget, I was able to give participants an endowment
+of £50 each, which was around double of what the item costs to buy.
+Assuming that the item is priced roughly around the average WTP (which
+turned out to be correct), this endowment was chosen to leave enough
+room for people with higher WTP to make their bid and to capture this in
+the data. This is important for the goals of the experiment, since if I
+had, for example, chosen an endowment of £20, the majority of
+participants might have bid their maximum amount, hindering my ability
+to meaningfully compare WTP across the two groups. I chose relatively
+simple exchange rates of 5 and \(1/5\) so that the exchange rate
+calculations would be relatively easy to make, allowing me to be more
+confident that differences between groups were not due to the mental
+effort required to do calculations but due to something else. Raghubir
+and Srivastava (Raghubir and Srivastava 2002) acknowledge that ``the
+reliance on face value may be a function of the ease with which the
+foreign money can be converted. \ldots{} Future research should examine
+the asymmetric and nonlinear nature of this effect''. Since the goal of
+this study is to investigate that an effect exists that is not solely
+based on a high difficulty or large mental effort required when doing
+specific, difficult calculations, I aimed to make the calculations as
+easy as possible in order to isolate the effect of the exchange rate and
+nominal value of the foreign currency. Further, since the study was
+conducted online, participants were easily able to and allowed to use
+calculators for any part.
 
 \section{Limitations}\label{limitations}
 
-In setting up the experiment, we incorrectly used the BDM mechanism.
+In setting up the experiment, I incorrectly used the BDM mechanism.
 Instead of explaining it as a sealed-bid second-price auction, the
 experiment instructions explained it as a sealed-bid first-price
 auction. Unlike in a second-price auction, the participants of a first
-price auction do not have a dominant strategy to bid their true
+price auction do not have a (weakly) dominant strategy to bid their true
 valuations, in fact there generally is no dominant strategy in such an
-auction (\textbf{cite?}). (\textbf{todo?})
+auction (\textbf{cite?}). This is true even in this auction in which
+participants knew that they were bidding against a computer agent who
+would randomly draw a bid from a uniform distribution from 0-50, with an
+expected bid of 25. Indeed, the optimal strategy by participants was to
+choose their bid b by maximising their payoff p:
+
+\[\frac{b}{50} * u(x = 1, 50 - b) + (1 - \frac{b}{50}) * u(x = 0, 50)\]
+
+where u(x, m) is their utility function, x is a binary variable where x
+= 1 signifies owning the good (and vice-versa) and m = 50 is their
+budget (in Pounds). As is obvious, the value of b depends on the
+participants' utility function. Hence, while players in this auction
+need not necessarily have the optimal strategy of telling their true
+valuation, sufficient randomisation should ensure that the utility
+functions of agents in each group should be evenly distributed. This
+would entail that we can nonetheless compare bids across both groups.
 
 Another limitation of the study is the low sample size of 41
 participants, which entails lower statistical power and thus a lower
@@ -715,9 +796,10 @@ to determine the power of the t-test, which refers to the likelihood of
 the test detecting a true positive when an effect actually exists
 (\textbf{cite?}). High power would indicate that this likelihood is high
 and vice versa. To conduct the analysis, we first need to find the
-effect size, or Cohen's D and then implement the power analysis.
+effect size, or Cohen's D, and then implement the power analysis.
 Further, I will also conduct an analysis that investigates how big the
-sample size should have been to get a power of 80\%.
+sample size should have been to get a power of 80\%, which is a
+generally accepted threshold for significant power.
 
 \begin{verbatim}
 
@@ -838,7 +920,7 @@ coefficient of -43.487 suggests that people whose usual expenditure is
 between £551 and £700 per month bid lower than the group overall.
 However, given that this is only significant at the 10\% level and not
 at any lower ones, it is likely that this correlation is due to the low
-sample size rather than representing a true correlation between these
+sample size rather than it representing a true correlation between these
 variables.
 
 \chapter{Discussion}\label{discussion}
@@ -847,36 +929,40 @@ The study conducted found that the fraction group bid less on average
 than the multiple group. The difference in the means across the two
 groups is around £6, or over 10\% of the budget, signifying that this
 difference occurs due to a systematic difference in how each group
-calculated their value in the foreign currency BlueCoin. The only
-difference between the groups was the exchange rate of BlueCoin to the
-Pound and, as a result, the nominal values of the budget and the bids.
-This would suggest that this difference in bids occurs based on whether
-the foreign currency is a fraction or multiple of the home currency.
+calculated their value in the foreign currency BlueCoin rather than
+random chance. The only difference between the groups was the exchange
+rate of BlueCoin to the Pound and, as a result, the numerousity of the
+nominal values of the budget and the bids. This would suggest that this
+difference in bids occurs based on whether the foreign currency is a
+fraction or multiple of the home currency.
 
 Above, I outlined the three models for how consumers value goods in a
 foreign currency that have been suggested by previous research. The
 standard model would have predicted that both groups would on average
-bid the same, the model proposed by RAS would have predicted that the
-fraction group would on average bid more than the multiple group and the
-model proposed by WER would have predicted the opposite, namely that the
+bid the same, the model proposed by Raghubir and Srivastava (Raghubir
+and Srivastava 2002) would have predicted that the fraction group would
+on average bid more than the multiple group and the model proposed by
+Wertenbroch, Soman and Chattopadhyay (Wertenbroch, Soman, and
+Chattopadhyay 2007) would have predicted the opposite, namely that the
 fraction group would on average bid less than the multiple group. Hence,
 the third model would have made the most accurate prediction for the
 study conducted.
 
-WER (Wertenbroch, Soman, and Chattopadhyay 2007) argue that this
-systematic difference in valuations and spending behaviour occurs
-because consumers are biased by the nominal difference between their
-budget and the product valuation in the foreign currency and thus anchor
-on this value when converting amounts between their home currency and
-foreign currency. In the context of the study, this would entail that
-the fraction group calculated the difference between their budget and
-their bid in BlueCoin and adjusted their bid downwards based on it,
-since this difference will be small (\textless{} 10) in nominal terms.
-The multiple group, on the other hand, would have calculated this
-difference and received a larger amount of surplus for the same product
-valuation in real terms (25 times as large as the fraction group).
-Hence, the multiple group would have adjusted their bid upwards, leading
-to a higher average bid in real (and nominal) terms.
+Wertenbroch, Soman and Chattopadhyay (Wertenbroch, Soman, and
+Chattopadhyay 2007) argue that this systematic difference in valuations
+and spending behaviour occurs because consumers are biased by the
+nominal difference between their budget and the product valuation in the
+foreign currency and thus anchor on this value when converting amounts
+between their home currency and foreign currency. In the context of the
+study, this would entail that the fraction group calculated the
+difference between their budget and their bid in BlueCoin and adjusted
+their bid downwards based on it, since this difference will be small
+(\textless{} 10) in nominal terms. The multiple group, on the other
+hand, would have calculated this difference and received a larger amount
+of surplus for the same product valuation in real terms (25 times as
+large as the fraction group). Hence, the multiple group would have
+adjusted their bid upwards, leading to a higher average bid in real (and
+nominal) terms.
 
 However, there might be alternative explanations that would be
 consistent with one or more of the other models outlined above. One
@@ -886,49 +972,50 @@ between their budget and their valuation of a product in the foreign
 currency. While this alternative hypothesis would be hard to prove, it
 would not change the prediction for how the difference in product
 valuations across groups that use either a fraction or multiple
-currency. Indeed, it would predict the exact same result and is this
-consistent with the model proposed by WER, even though it differs in
-explaining the internal work that individuals would do to come to that
-conclusion.
+currency. Indeed, it would predict the exact same result and is thus
+consistent with the model proposed by Wertenbroch, Soman and
+Chattopadhyay, even though it differs in explaining the internal work
+that individuals would do to come to that conclusion.
 
 Another explanation might be that people are simply worse at dividing
 than multiplying (or the reverse), which could explain the perceived
 differences between the groups. On this explanation, even when consumers
 have the same valuation in real terms, one group will systematically
 fail to accurately convert this value into the foreign currency.
-However, this explanation is unlikely for several reasons. First, this
-claim assumes that a significant amount of people are significantly
-worse at performing one of the operations across all numbers. From
-experience, it seems that when considering most numbers, one of these
-operations is more difficult to do but it is not always the same one.
-Secondly, this assumes that people are unaware enough of their
-difficulties (even when they are very significant) that they do not use
-a calculator even when one is easily accessible, such as when completing
-the survey for this study online. For these reasons, this explanation
-seems unlikely to be accurate.
+However, this explanation is unlikely for several reasons. First, it
+assumes that a significant amount of people are significantly worse at
+performing one of the operations across all numbers. From experience, it
+seems that when considering most numbers, one of these operations is
+more difficult to do but it is not always the same one. Secondly, this
+assumes that people are unaware enough of their difficulties (even when
+they are very significant) that they do not use a calculator even when
+one is easily accessible, such as when completing the survey for this
+study online. For these reasons, this explanation seems unlikely to be
+accurate.
 
 A third contending explanation could be that individuals simply prefer
-whole numbers over fractions or decimals, leading consumers to make less
-granular valuation choices when considering a currency with a low face
-value. Because of this, there can be differences in groups of
-individuals if, for example, many participants choose to round down. For
-example, it could have been the case that the average valuation of the
-good in the fraction group was 24 but if a significant amount of
-participants rounded this down to the nearest whole number in BlueCoin
-(4), then this average valuation would now be 20. This explanation can
-be supported empirically, given that only 3 bids out of 41 were decimal
-numbers. One might also claim that this behaviour of preferring whole
-numbers is rational, given that it requires less mental effort,
-especially when multiplying and dividing these numbers. Further research
-is required to determine whether this hypothesis could explain the
-observed behaviour, either entirely or in conjunction with one of the
-models proposed above.
+to use whole numbers over fractions or decimals, leading consumers to
+make less granular valuation choices when considering a currency with a
+low face value. Because of this, there can be differences in groups of
+individuals if, for example, many participants in the same group choose
+to round down. For example, it could have been the case that the average
+valuation of the good in the fraction group was £24 but if a significant
+amount of participants rounded this down to the nearest whole number in
+BlueCoin (4), then this average valuation would now be 20. This
+explanation can be supported empirically, given that only 3 bids out of
+41 were decimal numbers. One might also claim that this behaviour of
+preferring whole numbers is rational, given that it requires less mental
+effort, especially when multiplying and dividing these numbers. Further
+research is required to determine whether this hypothesis could explain
+the observed behaviour, either entirely or in conjunction with one of
+the models proposed above.
 
 The former two of these alternative explanations seem unlikely, but the
-latter seems like it could be accurate at least to some extent.
-Nonetheless, it seems like the model proposed by WER is the most
-accurate in predicting and explaining the perceived behaviour when
-formulating valuations of goods in different foreign currencies.
+latter seems like it could be accurate at least to some extent. Without
+further research, however, it seems like the model proposed by
+Wertenbroch, Soman and Chattopadhyay is the most accurate in predicting
+and explaining the perceived behaviour when formulating valuations of
+goods in different foreign currencies.
 
 \section{Limitations, Theoretical Implications and Future
 Research}\label{limitations-theoretical-implications-and-future-research}
@@ -936,26 +1023,28 @@ Research}\label{limitations-theoretical-implications-and-future-research}
 The main limitation of the study conducted is that due to small sample
 size, the results are not statistically significant at the 5\% level and
 the power of the t-test for a difference in means is only 22\%. Hence,
-even though the observations line up with the model proposed by WER, it
-could be the case that this result is due to random chance. In repeating
-this study, it would be useful to get a sample size of at least 200
-participants to roughly achieve a power of 80\% and likely also
-statistical significance in conducting the t-test. The second major
-limitation is that the BDM mechanism was implemented incorrectly,
-entailing that the dominant strategy for participants was not to reveal
-their true valuations on the good. In a redo, this mistake could be
-fixed relatively easily by adjusting the experiment instructions.
+even though the observations line up with the model proposed by
+Wertenbroch, Soman and Chattopadhyay, it could be the case that this
+result is due to random chance. In repeating this study, it would be
+useful to get a sample size of at least 200 participants to roughly
+achieve a power of 80\% and likely also statistical significance in
+conducting the t-test. The second major limitation is that the BDM
+mechanism was implemented incorrectly, entailing that there was no
+dominant strategy for participants to reveal their true valuations on
+the good. In a redo, this mistake could be fixed relatively easily by
+adjusting the experiment instructions.
 
 Apart from the limitations, the major theoretical implication of this
-paper is the finding that the model proposed by WER (Wertenbroch, Soman,
-and Chattopadhyay 2007) seems to be most accurate in predicting and
-explaining consumer behaviour when eliciting a WTP on a good. In line
-with these authors, this conclusion contradicts the findings of the
-``face value effect'' by RAS (Raghubir and Srivastava 2002) and
-subsequently by Fang (Fang 2019). Further, this conclusion implies that,
-contrary to traditional consumption theory, individuals formulate their
-WTP in relation to the difference between their budget and the valuation
-of a good rather than its' ratio.
+paper is the finding that the model proposed by Wertenbroch, Soman and
+Chattopadhyay (Wertenbroch, Soman, and Chattopadhyay 2007) seems to be
+most accurate in predicting and explaining consumer behaviour when
+eliciting a WTP on a good in a foreign currncy. In line with these
+authors, this conclusion contradicts the findings of the ``face value
+effect'' by Raghubir and Srivastava (Raghubir and Srivastava 2002) and
+subsequently by Fang (Fang 2019). Further, this conclusion also implies
+that, contrary to traditional consumption theory, individuals formulate
+their WTP in relation to the difference between their budget and the
+valuation of a good rather than its' ratio.
 
 Future research could build on this study and its' findings in several
 important ways: first, it would make sense to conduct a similar or
@@ -965,12 +1054,19 @@ effect observed is statistically significant and reproducible. Further,
 it would be interesting to investigate the third alternative hypothesis
 formulated above in order to gain a better understanding into the exact
 process that leads individuals to systematically under- or overspend
-when using foreign currencies.
+when using foreign currencies. It might, however, be difficult to
+conduct an adequate study to accurately test that claim.
 
 \chapter{References}\label{references}
 
 \phantomsection\label{refs}
 \begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-Alter2008}
+Alter, Adam L., and Daniel M. Oppenheimer. 2008. {`Easy on the Mind,
+Easy on the Wallet: The Roles of Familiarity and Processing Fluency in
+Valuation Judgments'}. \emph{Psychonomic Bulletin {\&} Review} 15 (5):
+985--90. \url{https://doi.org/10.3758/PBR.15.5.985}.
+
 \bibitem[\citeproctext]{ref-Fang2019}
 Fang, Justin. 2019. {`In-Game Currency Design and Consumer Spending
 Behavior'}. Bachelor\textquotesingle s Thesis, Ross School of Business,
@@ -994,13 +1090,121 @@ Numerosity Effects}'}. \emph{Journal of Consumer Research} 34 (1):
 
 \section{Experiment Instructions}\label{experiment-instructions}
 
-The full experiment instructions can be found as screenshots at
-\url{https://github.com/kopy-kat/virtual-currencies-paper/tree/main/experiment_instructions}.
+\begin{figure}[H]
+
+{\centering \includegraphics{experiment_instructions/consent.png}
+
+}
+
+\caption{Consent}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \includegraphics{experiment_instructions/instructions.png}
+
+}
+
+\caption{Instructions}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \includegraphics{experiment_instructions/auction_fraction.png}
+
+}
+
+\caption{Auction: Fraction Group}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \includegraphics{experiment_instructions/auction_multiple.png}
+
+}
+
+\caption{Auction: Multiple Group}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \includegraphics{experiment_instructions/follow_up.png}
+
+}
+
+\caption{Follow up}
+
+\end{figure}%
 
 \section{Source Code}\label{source-code}
 
-The full source code of the paper and the data analysis can be found at
-\url{https://github.com/kopy-kat/virtual-currencies-paper}.
+The full source code of data analysis is follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the required libraries}
+\FunctionTok{library}\NormalTok{(pwr)}
+\FunctionTok{library}\NormalTok{(lsr)}
+
+\CommentTok{\# Load the experiment data}
+\NormalTok{experiment\_data }\OtherTok{\textless{}{-}}
+  \FunctionTok{read.csv}\NormalTok{(}\StringTok{"virtual{-}currencies{-}paper/data/experiment\_data\_formatted.csv"}\NormalTok{)}
+
+\CommentTok{\# Summary statistics for the bid columns}
+\FunctionTok{summary}\NormalTok{(experiment\_data}\SpecialCharTok{$}\NormalTok{group\_fraction\_bid\_in\_pounds)}
+\FunctionTok{sd}\NormalTok{(experiment\_data}\SpecialCharTok{$}\NormalTok{group\_fraction\_bid\_in\_pounds, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\FunctionTok{summary}\NormalTok{(experiment\_data}\SpecialCharTok{$}\NormalTok{group\_multiple\_bid\_in\_pounds)}
+\FunctionTok{sd}\NormalTok{(experiment\_data}\SpecialCharTok{$}\NormalTok{group\_multiple\_bid\_in\_pounds, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+
+\CommentTok{\# Plot a boxplot for the bid columns}
+\FunctionTok{boxplot}\NormalTok{(}
+\NormalTok{  experiment\_data}\SpecialCharTok{$}\NormalTok{group\_fraction\_bid\_in\_pounds,}
+\NormalTok{  experiment\_data}\SpecialCharTok{$}\NormalTok{group\_multiple\_bid\_in\_pounds,}
+  \AttributeTok{main =} \StringTok{"Boxplot of fraction and multiple group bids (in Pounds)"}\NormalTok{,}
+  \AttributeTok{names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Group Fraction"}\NormalTok{, }\StringTok{"Group Multiple"}\NormalTok{),}
+  \AttributeTok{xlab =} \StringTok{"Variables"}\NormalTok{,}
+  \AttributeTok{ylab =} \StringTok{"Values"}
+\NormalTok{)}
+
+\CommentTok{\# Perform a t{-}test to compare the means of the two groups}
+\FunctionTok{t.test}\NormalTok{(}
+\NormalTok{  experiment\_data}\SpecialCharTok{$}\NormalTok{group\_fraction\_bid\_in\_pounds,}
+\NormalTok{  experiment\_data}\SpecialCharTok{$}\NormalTok{group\_multiple\_bid\_in\_pounds}
+\NormalTok{)}
+
+\CommentTok{\# Conduct a regression analysis to examine the relationship between}
+\CommentTok{\# the bid amounts and the demographic variables}
+\NormalTok{model\_group\_fraction }\OtherTok{\textless{}{-}}
+  \FunctionTok{lm}\NormalTok{(}
+\NormalTok{    group\_fraction\_bid\_in\_pounds }\SpecialCharTok{\textasciitilde{}}\NormalTok{ lived\_abroad }\SpecialCharTok{+}
+\NormalTok{      travel\_frequency }\SpecialCharTok{+}\NormalTok{ expenditure,}
+    \AttributeTok{data =}\NormalTok{ experiment\_data}
+\NormalTok{  )}
+\FunctionTok{summary}\NormalTok{(model\_group\_fraction)}
+
+\NormalTok{model\_group\_multiple }\OtherTok{\textless{}{-}}
+  \FunctionTok{lm}\NormalTok{(}
+\NormalTok{    group\_multiple\_bid\_in\_pounds }\SpecialCharTok{\textasciitilde{}}\NormalTok{ lived\_abroad }\SpecialCharTok{+}
+\NormalTok{      travel\_frequency }\SpecialCharTok{+}\NormalTok{ expenditure,}
+    \AttributeTok{data =}\NormalTok{ experiment\_data}
+\NormalTok{  )}
+\FunctionTok{summary}\NormalTok{(model\_group\_multiple)}
+
+\CommentTok{\# Calculate the effect size (Cohens D)}
+\NormalTok{effect\_size }\OtherTok{\textless{}{-}} \FunctionTok{cohensD}\NormalTok{(}
+\NormalTok{  experiment\_data}\SpecialCharTok{$}\NormalTok{group\_fraction\_bid\_in\_pounds,}
+\NormalTok{  experiment\_data}\SpecialCharTok{$}\NormalTok{group\_multiple\_bid\_in\_pounds}
+\NormalTok{)}
+
+\CommentTok{\# Find the power of the t test conducted above}
+\FunctionTok{pwr.t2n.test}\NormalTok{(}\AttributeTok{n1 =} \DecValTok{21}\NormalTok{, }\AttributeTok{n2 =} \DecValTok{20}\NormalTok{, }\AttributeTok{d =}\NormalTok{ effect\_size, }\AttributeTok{sig.level =} \FloatTok{0.05}\NormalTok{)}
+
+\CommentTok{\# Find the sample size required to achieve a power of 0.8 (80\%)}
+\FunctionTok{pwr.t.test}\NormalTok{(}\AttributeTok{power =} \FloatTok{0.8}\NormalTok{, }\AttributeTok{d =}\NormalTok{ effect\_size, }\AttributeTok{sig.level =} \FloatTok{0.05}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
 
 
 
