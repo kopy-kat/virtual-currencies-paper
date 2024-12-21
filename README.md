@@ -8,4 +8,4 @@ Research into the effect of using foreign currencies on consumption behaviour su
 
 ## Using this repository
 
-To read the paper in PDF format, head to `out/paper.pdf`. Alternatively, you can also read the paper in Latex (`paper.tex`) or QMD (`paper.qmd`).
+To read the paper in PDF format, head to [`out/paper.pdf`](./out/paper.pdf). Alternatively, you can also read the paper in Latex ([`paper.tex`](./paper.tex)) or QMD ([`paper.qmd`](paper.qmd)).
